@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Epic Mail</title>
+    <link rel="stylesheet" href="./assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/main.css">
+
+</head>
+
+<body>
+    <main class="d-flex flex-column justify-content-between">
+        <nav class="">
+            <header>
+                <div class="container w-90 d-flex justify-content-between">
+                    <div class="epic-mail">
+                        <h1 title="EpicMail"><a href="/index.html" class="header-title">EpicMail</a></h1>
+                    </div>
+                    <div class="epic-mail d-flex mx-5 mt-1" style="flex-grow:2">
+                        <input class="input-field form-control" type="text" placeholder="Search..." width="100%">
+
+                    </div>
+                    <div class="epic-mail">
+                        <img src="./assets/images/boss.svg" class="responsive-img" width="40px" height="40px">
+                        <div class="dropdown">
+                            <img src="./assets/images/caret-down.svg" class="responsive-img" width="18px" height="18px">
+                            <div class="dropdown-content">
+                                <a href="#">Profile</a>
+                                <a href="#">Log Out</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </header>
+        </nav>
+        <section class="wrapper">
+            <!-- Sidebar  -->
+            <nav id="sidebar">
+                <a type="button" href="#" id="sidebarCollapse" class="fixed-menu"><img src="./assets/images/menubtn.svg"
+                        width="30px" height="30px"></a>
+                <div class="sidebar-header">
+                    <h3><img src="./assets/images/fullenvelope.svg" width="50px" height="50px" class="responsive-image"></h3>
+                    <strong><img src="./assets/images/fullenvelope.svg" width="40px" height="40px" class="responsive-image"></strong>
+                </div>
+
+                <ul class="list-unstyled components">
+                    <li class="pb-3">
+                        <a href="#" aria-expanded="false" class="container" id="myBtn" onclick="displayBlock()">
+                            <span class="hide">New Message</span>
+                            <img class="responsive-image mssgicon fr" src="./assets/images/newmessage.svg" width="30px"
+                                height="30px">
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="#" aria-expanded="false" class="container">
+                            <span class="hide">Inbox <small class="red-badge ml-1">5</small> </span>
+                            <img class="mssgicon fr responsive-image" src="./assets/images/inbox.svg" width="30px"
+                                height="30px">
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#" aria-expanded="false" class="container">
+                            <span class="hide">Sent</span>
+                            <img class="mssgicon fr responsive-image" src="./assets/images/sentmail.svg" width="30px"
+                                height="30px">
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#" aria-expanded="false" class="container">
+                            <span class="hide">Draft</span>
+                            <img class="mssgicon fr responsive-image" src="./assets/images/draft.svg" width="30px"
+                                height="30px">
+                        </a>
+                    </li>
+                </ul>
+
+            </nav>
+            <!-- Page Content  -->
+            <div id="content">
+                <div class="container w-90 d-flex justify-content-between w-100">
+                    <div>
+                        <input type="checkbox" name="allDelete" id="allDelete">
+                        <label for="allDelete">Mark All</label>
+                    </div>
+                </div>
+                <div class="wrapper">
+
+                    <table class="" width="100%">
+                        <tr class="d-flex justify-content-between hoverable bg-light p-3" width="100%">
+                            <td class="d-flex justify-content-center" style="flex-grow: 1" width="20%" width="20%">
+                                <form>
+                                    <input type="checkbox" id="index${i}" value="check">
+                                    <label for="index${i}"></label>
+                                </form>
+                            </td>
+                            <td class="d-flex justify-content-center" style="flex-grow: 1" width="20%">
+                                <h5>
+                                    CGE Agressions
+                                </h5>
+                            </td>
+                            <td class="d-flex justify-content-center" style="flex-grow: 3" width="60%">
+                                <div>
+                                    <h5 class="message-title text-center">
+                                        Thanks for coming here
+                                    </h5>
+                                    <p class="message text-center">
+                                        We are so grateful for your visit to us this weekend. Kind regards.
+                                    </p>
+                                </div>
+                            </td>
+                            <td class="d-flex justify-content-center" style="flex-grow: 1" width="20%">
+                                <p class="text-center"> 25th Feb, 2019 </p>
+                            </td>
+                            <td class="d-flex justify-content-center" style="flex-grow: 2" width="20%">
+                                <a href="#" class="tooltip"><img src="./assets/images/reply.svg" width="30px" class="mx-5"
+                                        height="30px">
+                                    <span class="tooltiptext">Reply</span>
+                                </a>
+                                <a href="#" class="tooltip"><img src="./assets/images/forward.svg" width="30px" class=""
+                                        height="30px" title="forward">
+                                    <span class="tooltiptext">forward</span></a>
+                            </td>
+                            <td class="d-flex justify-content-center" style="flex-grow: 1" width="20%">
+                                <a href="#" class="tooltip"><img src="./assets/images/dustbin.svg" width="30px" class="mx-2"
+                                        height="30px" title="delete">
+                                    <span class="tooltiptext">delete</span></a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </section>
+        <footer class="">
+            <div class="d-flex justify-content-center">
+                <p class="copyright">
+                    Patrick Okuns<i class="fas fa-copyright"></i> 2019
+                </p>
+            </div>
+        </footer>
+
+        <!-- The modal -->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close"><img src="./assets/images/x-button.svg" width="18px" height="18px"></span>
+                <section class="container">
+                    <form id="newMessage">
+                        <div class=" form-group">
+                            <label for="to">To: <i class="fa fa-address-card-o" aria-hidden="true"></i></label>
+                            <input type="text" name="to" id="to" class="form-control">
+                        </div>
+                        <div class=" form-group">
+                            <label for="subject">Subject: <i class="fa fa-address-card-o" aria-hidden="true"></i></label>
+                            <input type="text" name="subject" id="subject" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="editor1" id="editor1" placeholder="Type here...">
+                             </textarea>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <button onclick="cancelMessage()" for="modal" id="cancelbutton" class="button red-button">
+                                Cancel
+                                <img class="" src="./assets/images/email.svg" width="15px" height="15px">
+                            </button>
+                            <button onclick="saveDraft()" class="button blue-button" id="savedraft">
+                                Save
+                                <img src="./assets/images/mail-black-envelope-symbol.svg" width="15px" height="15px">
+                            </button>
+                            <button onclick="submitMssg()" class="button green-button" target="_parent" id="newmessage">
+                                Send
+                                <img src="./assets/images/sendmail.svg" width="15px" height="15px">
+                            </button>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
+
+    </main>
+    <script src="./assets/jquery.js"></script>
+    <script src="./ckeditor.js"></script>
+    <script src="./epichttp.js"></script>
+    <script src="./classes.js"></script>
+    <script src="ui.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

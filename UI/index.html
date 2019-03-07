@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Epic Mail</title>
+    <link rel="stylesheet" href="./assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="./assets/css/main.css">
+</head>
+
+<body id="indexpage">
+    <main class="d-flex flex-column justify-content-between">
+        <nav class="">
+            <header>
+                <div class="container w-90 d-flex justify-content-between">
+                    <div class="epic-mail">
+                        <h1 title="EpicMail"> <a href="/index.html" class="header-title">EpicMail</a></h1>
+                    </div>
+                    <div class="epic-mail">
+                        <h4> <a href="register.html" class="">Register Now!</a></h4>
+                    </div>
+                </div>
+            </header>
+        </nav>
+        <section>
+            <div class="container w-90 d-flex justify-content-between opacity-9">
+                <div id="test">
+                    <p>Experience Our awesome mail services</p>
+                </div>
+                <div class="card bg-lightest-brown p-4">
+                    <div class="card-body"></div>
+                    <form id="loginForm">
+                        <div class=" form-group">
+                            <input type="text" name="email" id="loginEmail" class="form-control" placeholder="Email:">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="password" id="loginPassword" placeholder="Password:">
+
+                        </div>
+                        <input type="submit" onclick="login()" value="Login" class="btn bg-blue mb-4" id="loginSubmit">
+                    </form>
+                    <small class="">Dont have an acount? <span class="text-blue"><a href="register.html">Sign Up</a></span></small>
+                    <small class="">Forgotten Password? <span class="text-blue"><a href="resetpassword.html">Reset it</a></span></small>
+                </div>
+            </div>
+
+
+
+        </section>
+        <footer class="">
+            <div class="d-flex justify-content-center">
+                <p class="copyright">
+                    Patrick Okuns &copy 2019
+                </p>
+            </div>
+        </footer>
+        <div class="d-none">
+            <textarea class="d-none" id="editor1"></textarea>
+        </div>
+
+    </main>
+
+    <script src="./assets/jquery.js"></script>
+    <script src="https://cdn.ckeditor.com/4.11.3/standard/ckeditor.js"></script>
+    <script src="./epichttp.js"></script>
+    <script src="./ui.js"></script>
+    <script src="./classes.js"></script>
+    <script src="./app.js"></script>
+</body>
+
+</html>
