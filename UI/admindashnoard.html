@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Epic Mail</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/main.css">
+
+</head>
+
+<body>
+    <main class="d-flex flex-column justify-content-between">
+        <nav class="">
+            <header>
+                <div class="d-flex justify-content-between">
+                    <div class="epic-mail">
+
+                        <h1 title="EpicMail"><a href="/index.html" class="header-title"> Epic Mail</a></h1>
+                    </div>
+                    <div class="epic-mail d-flex mx-5 mt-1" style="flex-grow:2">
+                        <input class="input-field form-control" type="text" placeholder="Search..." width="100%">
+                    </div>
+                    <!-- <div class="epic-mail">
+                        <img src="./assets/images/boss.svg" class="responsive-img" width="40px" height="40px">
+                        <div class="dropdown">
+                            <img src="./assets/images/caret-down.svg" class="responsive-img" width="18px" height="18px">
+                            <div class="dropdown-content">
+                                <a href="#">Profile</a>
+                                <a href="#">Log Out</a>
+                            </div>
+                        </div>
+
+                    </div> -->
+                    <div class="epic-mail d-flex mt-3">
+                        <span>
+                            okunspatrick@epicmail.com
+                        </span>
+                    </div>
+                    <div class="epic-mail mx-2">
+
+                        <div class="dropdown">
+                            <a href="#"><img src="./assets/images/boss.svg" class="responsive-img" width="40px" height="40px"></a>
+                            <div class="dropdown-content">
+                                <a href="#">Profile</a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="epic-mail d-flex mt-2 mx-5 ">
+                        <a href="#" class="logout"><i class="fas fa-2x fa-sign-out-alt"></i></a>
+                        <!-- <img src="./assets/images/logout.svg" class="responsive-img" width="30px" height="30px"></a> -->
+                    </div>
+                </div>
+            </header>
+        </nav>
+        <section class="wrapper">
+            <!-- Sidebar  -->
+            <nav id="sidebar" class="active">
+                <!-- <a type="button" href="#" id="sidebarCollapse" class="fixed-menu"><img src="./assets/images/menubtn.svg"
+                        width="30px" height="30px"></a> -->
+                <!-- <div class="sidebar-header">
+                    <h3><img src="./assets/images/fullenvelope.svg" width="50px" height="50px" class="responsive-image"></h3>
+                    <strong><img src="./assets/images/fullenvelope.svg" width="40px" height="40px" class="responsive-image"></strong>
+                </div> -->
+
+                <ul class="list-unstyled components">
+                    <li class="pb-3">
+                        <a href="#" aria-expanded="false" class="container" id="myBtn">
+                            <span class="hide">New Group</span>
+                            <img class="responsive-image mssgicon fn" src="./assets/images/group.svg" width="30px"
+                                height="30px">
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="#" aria-expanded="false" class="container">
+                            <span class="hide">Users<small class="red-badge ml-1">5</small></span>
+                            <img class="mssgicon fn responsive-image" src="./assets/images/man-user.svg" width="30px"
+                                height="30px">
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#" aria-expanded="false" class="container">
+                            <span class="hide">Groups <small class="green-badge ml-1">3</small></span>
+                            <img class="mssgicon fn responsive-image" src="./assets/images/multiple-users-silhouette.svg"
+                                width="30px" height="30px">
+                        </a>
+                    </li>
+                </ul>
+
+            </nav>
+            <!-- Page Content  -->
+            <div id="content">
+                <div class="w-90 d-flex justify-content-between">
+                    <!-- <div class="mt-1">
+                        <input type="checkbox" name="all" id="all">
+                        <label for="allDelete">Mark All</label>
+                    </div> -->
+                    <div class="ks-cboxtags">
+                        <div><input type="checkbox" id="checkboxOne" value="Rainbow Dash"><label for="checkboxOne">
+                                <small>Mark All</small> </label></div>
+                    </div>
+
+                </div>
+                <div class="wrapper" width="100%">
+                    <table class="" width="100%">
+                        <tr class="d-flex justify-content-between hoverable bg-light p-3" width="100%">
+                            <td class="d-flex justify-content-center" style="flex-grow: 1" width="20%" width="20%">
+                                <form>
+                                    <input type="checkbox" id="index${i}" value="check">
+                                    <label for="index${i}"></label>
+                                </form>
+                            </td>
+                            <td class="d-flex justify-content-center" style="flex-grow: 1" width="20%">
+                                <!-- <h5>
+                                    Okafor Jude
+                                </h5> -->
+                                <div class="chip">
+                                    <img src="./assets/images/boss.svg" width="40px" height="40px" class="responsive-img">
+                                    John Doe
+                                </div>
+
+                            </td>
+                            <!-- <td class="d-flex justify-content-center" style="flex-grow: 1" width="20%">
+                                <img src="./assets/images/boss.svg" width="40px" height="40px">
+                            </td> -->
+                            <td class="d-flex justify-content-center" style="flex-grow: 3" width="60%">
+                                <div>
+                                    <h5 class="message-title">
+                                        07065383765
+                                    </h5>
+                                    <p class="message">
+                                        Okaforjudechukwuebuka@epicmail.com
+                                    </p>
+                                </div>
+                            </td>
+                            <td class="d-flex justify-content-center" style="flex-grow: 1" width="20%">
+                                <p class="text-center"> 25th Feb, 2019 </p>
+                            </td>
+                            <td class="d-flex justify-content-center" style="flex-grow: 2" width="20%">
+
+                                <div class="dropdown">
+                                    <img src="./assets/images/add.svg" class="responsive-img" width="20px" height="20px">
+                                    <div class="dropdown-content">
+                                        <a href="#">Washington DC Accord</a>
+                                        <a href="#">Sydney Accord</a>
+                                        <a href="#">British Accord</a>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="d-flex justify-content-center" style="flex-grow: 1" width="20%">
+                                <a href="#"><img src="./assets/images/dustbin.svg" width="30px" class="mx-2" height="30px"></a>
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+            </div>
+        </section>
+        <footer class="">
+            <div class="d-flex justify-content-center">
+                <p class="copyright">
+                    Patrick Okuns <i class="fa fa-copyright" aria-hidden="true"></i> 2019
+                </p>
+            </div>
+        </footer>
+        <!-- The modal -->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close"><img src="./assets/images/x-button.svg" width="18px" height="18px"></span>
+                <section class="container mb-1">
+                    <form id="newGroup">
+                        <h3 class="text-center">Add New Group</h3>
+                        <div class=" form-group">
+                            <label for="groupName">Group Name <i class="fa fa-address-card-o" aria-hidden="true"></i></label>
+                            <input type="text" name="groupName" id="groupName" class="form-control">
+                        </div>
+                        <div class=" form-group">
+                            <label for="purpose">Purpose <i class="fa fa-address-card-o" aria-hidden="true"></i></label>
+                            <input type="text" name="purpose" id="purpose" class="form-control">
+                        </div>
+                        <!-- <div class="form-group">
+                            <textarea name="editor1" id="editor1" placeholder="Brief description about group...">
+                            </textarea>
+                        </div> -->
+                        <div class="d-flex justify-content-between">
+                            <button onclick="cancelGroup()" for="modal" id="cancelbutton" class="button red-button p-1">
+                                Cancel
+                                <img class="" src="./assets/images/fired.svg" width="20px" height="20px">
+                            </button>
+                            <button onclick="createGroup()" class="button green-button p-1" target="_parent" id="newmessage">
+                                Create Group
+                                <img src="./assets/images/group-more.svg" width="20px" height="20px">
+                            </button>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </main>
+    <script src="./assets/js/epichttp.js"></script>
+    <script src="./assets/js/classes.js"></script>
+    <script src="./assets/js/ui.js"></script>
+    <script src="/assets/js/admin.js"></script>
+</body>
+
+</html>
