@@ -5,14 +5,14 @@ class Login {
     }
 }
 class Register {
-    constructor(firstName, lastName, country, email, phone, gender, password, cnfpassword) {
+    constructor(firstName, lastName, country, email, phoneNumber, gender, password, dateOfBirth) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.country = country;
         this.email = email;
-        this.phone = phone;
+        this.phoneNumber = phoneNumber;
         this.gender = gender;
         this.password = password;
-        this.cnfpassword = cnfpassword;
+        this.dateOfBirth = dateOfBirth;
     }
 }
