@@ -28,8 +28,10 @@ module.exports = {
       const token = jwt.sign(payload, 'secretkey');
       res.status(201).json({ token, user, 'status':200, 'message':'Register Successful' });
     } else {
+
       res.status(401).json({'message':'Email Already Exist', 'status':401});
     }
   }
 }
   
+
