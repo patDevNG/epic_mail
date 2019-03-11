@@ -31,7 +31,32 @@ module.exports = {
 
       res.status(401).json({'message':'Email Already Exist', 'status':401});
     }
+  },
+  
+  login: (req, res) => {
+    const userData = req.body;
+    const evaluateUser = Data.find(dataBaseUser => dataBaseUser.email === userData.email);
+    if (!evaluateUser) {
+      res.status(401).json({ 'status':401, 'Message':'Email Doesnot Exist'});
+    } else{
+      if (bcrypt.compareSync(userData.password, evaluateUser.password) === true) {
+        const payload = { subject: evaluateUser._id };
+        const token = jwt.sign(payload, 'secret');
+        const message = 'Login successful';
+        const status = 201;
+        let data ={
+          id :evaluateUser.id,
+          firstName : evaluateUser.firstName,
+          lastName: evaluateUser.lastName,
+          email :evaluateUser.email,
+        }
+        res.status(201).json({ token,data, message, status });
+      }
+     else {
+      res.status(401).json({ 'status':401, 'Message':'Invalid Password'});
+    }
   }
+}
 }
   
 
