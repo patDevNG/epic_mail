@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Epic Mail</title>
+    <!-- <link rel="stylesheet" href="./assets/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="./assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/main.css">
+</head>
+
+<body>
+    <main class="d-flex flex-column justify-content-between">
+        <nav class="">
+            <header>
+                <div class="container w-90 d-flex justify-content-between">
+                    <div class="epic-mail">
+                        <h1 title="EpicMail"><a href="/index.html" class="header-title">EpicMail</a></h1>
+                    </div>
+                    <div class="epic-mail">
+                            <input class="input-field form-control d-inline" type="text" placeholder="Search Entire Mail">
+                            <input type="button d-block" value="Search..." class="btn-search">
+                    </div>
+                    <div class="epic-mail">
+                        <img src="./assets/images/boss.svg" class="responsive-img" width="40px" height="40px">
+                        <div class="dropdown">
+                            <img src="./assets/images/caret-down.svg" class="responsive-img" width="30px" height="30px">
+                            <div class="dropdown-content">
+                                <a href="#">Profile</a>
+                                <a href="#">Log Out</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </header>
+        </nav>
+        <div class="wrapper">
+            <!-- Sidebar  -->
+            <nav id="sidebar" class="sidebar">
+                <a type="button" href="#" id="sidebarCollapse" class="fixed-menu"><img src="./assets/images/menubtn.svg"
+                        width="30px" height="30px"></a>
+                <div class="sidebar-header">
+                    <h3><img src="./assets/images/fullenvelope.svg" width="50px" height="50px" class="responsive-image"></h3>
+                    <strong><img src="./assets/images/fullenvelope.svg" width="40px" height="40px" class="responsive-image"></strong>
+                </div>
+
+                <ul class="list-unstyled components">
+                    <li class="active pb-3">
+                        <a href="#" aria-expanded="false" class="container" id="myBtn">
+                            <span class="hide">New Message</span>
+                            <img class="responsive-image mssgicon fr" src="./assets/images/newmessage.svg" width="30px"
+                                height="30px">
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#" aria-expanded="false" class="container">
+                            <span class="hide">Inbox <small class="red-badge ml-1">5</small> </span>
+                            <img class="mssgicon fr responsive-image" src="./assets/images/inbox.svg" width="30px"
+                                height="30px">
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#" aria-expanded="false" class="container">
+                            <span class="hide">Sent</span>
+                            <img class="mssgicon fr responsive-image" src="./assets/images/sentmail.svg" width="30px"
+                                height="30px">
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#" aria-expanded="false" class="container">
+                            <span class="hide">Draft</span>
+                            <img class="mssgicon fr responsive-image" src="./assets/images/draft.svg" width="30px"
+                                height="30px">
+                        </a>
+                    </li>
+                </ul>
+
+            </nav>
+
+            <!-- Page Content  -->
+            <div id="content" class="content">
+                <div class="d-flex justify-content-between" width = "100%">
+                    <div>
+                        <input type="checkbox" name="allDelete" id="allDelete">
+                        <label for="allDelete">Mark All</label>
+                    </div>
+
+                    <div>
+                        <img src="./assets/images/search.svg" class="responsive-img search-icon" width="70px" height="70px">
+                        <input class="input-field" type="text" placeholder="Search Entire Mail">
+                        <input type="button" value="Search..." class="btn-search">
+                    </div>
+                </div>
+                <!-- <div class="input-container"> -->
+                <ul class="wrapper justify-content-between ">
+                    <li class="justify-content-center hoverable bg-light">
+                        <form>
+                            <input type="checkbox" id="index${i}" value="check">
+                            <label for="index${i}"></label>
+                        </form>
+                    </li>
+                    <li class="justify-content-center hoverable bg-light">
+                        <h5>
+                            CGE Agressions
+                        </h5>
+                    </li>
+                    <li class="d-flex flex-column justify-content-around hoverable bg-light">
+                        <h5 class="message-title d-block text-center">
+                            Thanks for coming here
+                        </h5>
+                        <p class="message d-block text-center">
+                            We are so grateful for your visit to us this weekend. Kind regards.
+                        </p>
+                    </li>
+                    <li class="justify-content-center hoverable bg-light">
+                        <p id="dateSent"> 25th Feb </p>
+                    </li>
+                    <li class="d-flex justify-content-end">
+                        <img src="./assets/images/reply.svg" width="30px" class="mx-2" height="30px">
+                        <img src="./assets/images/dustbin.svg" width="30px" class="mx-2" height="30px">
+                        <img src="./assets/images/forward.svg" width="30px" class="mx-2" height="30px">
+                        <img src="./assets/images/add.svg" width="30px" class="mx-2" height="30px">
+                    </li>
+                </ul>
+                <!-- </div> -->
+            </div>
+        </div>
+        <footer class="">
+            <div class="d-flex justify-content-center">
+                <p class="copyright">
+                    Patrick Okuns<i class="fas fa-copyright"></i> 2019
+                </p>
+            </div>
+        </footer>
+
+        <input type="checkbox" id="modal" />
+        <p class="">Do it. Click the Button. I dare you.</p>
+        <label for="modal" class="modal-btn">
+            <i class="fa fa-fire" aria-hidden="true"></i>
+        </label> -->
+        <!-- The modal -->
+        <div class="modal-content">
+            <label for="modal" class="close">
+                <img src="./assets/images/x-button.svg" width="30px" height="30px">
+            </label>
+            <section class="container">
+                <form id="newMessage">
+                    <div class=" form-group">
+                        <label for="to">To: <i class="fa fa-address-card-o" aria-hidden="true"></i></label>
+                        <input type="text" name="to" id="to" class="form-control">
+                    </div>
+                    <div class=" form-group">
+                        <label for="subject">Subject: <i class="fa fa-address-card-o" aria-hidden="true"></i></label>
+                        <input type="text" name="subject" id="subject" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="editor1" id="editor1" placeholder="Type here...">
+                            </textarea>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <label onclick="cancelMessage()" for="modal" id="cancelbutton" class="button red-button">
+                            Cancel
+                            <img class="" src="./assets/images/email.svg" width="20px" height="20px">
+                        </label>
+                        <button onclick="saveDraft()" class="button blue-button" id="savedraft">
+                            Save
+                            <img src="./assets/images/mail-black-envelope-symbol.svg" width="15px" height="15px">
+                        </button>
+                        <a onclick="submitMssg()" class="button green-button" target="_parent" id="newmessage">
+                            Send
+                            <img src="./assets/images/sendmail.svg" width="15px" height="15px">
+                        </a>
+                    </div>
+                </form>
+            </section>
+        </div>
+
+    </main>
+    <script src="https://cdn.ckeditor.com/4.11.3/standard/ckeditor.js"></script>
+    <script src="./ckeditor.js"></script>
+    <script src="./assets/jquery.js"></script>
+    <script src="ui.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

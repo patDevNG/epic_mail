@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Epic Mail</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/main.css">
+
+</head>
+
+<body>
+    <main class="d-flex flex-column justify-content-between">
+        <nav class="">
+            <header>
+                <div class="w-90 d-flex justify-content-between epic-mail">
+                    <div class="">
+                        <h1 title="EpicMail"> <a href="/index.html" class="header-title">EpicMail</a></h1>
+                    </div>
+                    <div class="">
+                        <h4> <a href="index.html">Sign In</a> </h4>
+                    </div>
+                </div>
+            </header>
+        </nav>
+        <section class="container w-90 d-flex justify-content-center">
+            <div class="card bg-lightest-brown p-3 my-3">
+                <div class="card-body"></div>
+                <form id="registerForm" method="POST">
+                    <h2 class="text-center mb-2">
+                        Register Form
+                    </h2>
+                    <div class="d-flex justify-content-between">
+                        <div class=" form-group mt-1 mr-4">
+                            <input type="text" name="firstName" id="firstName" class="form-control" placeholder="First Name">
+                        </div>
+                        <div class=" form-group mt-1">
+                            <input type="text" name="lastName" id="lastName" class="form-control" placeholder="Last Name">
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <div class="form-group mt-1">
+                            <input type="country" class="form-control" name="country" id="country" placeholder="Country">
+                        </div>
+                        <div class=" form-group mt-1">
+                            <input type="text" name="phone" id="phone" class="form-control" placeholder="Phone Number">
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <div class=" form-group mt-1">
+                            <input type="email" name="email" id="email" class="form-control" placeholder="Proposed Email">
+                        </div>
+                        <div class=" form-group mt-1">
+                            <label for="gender">Gender</label>
+                            <select name="gender" id="gender">
+                                <option value="female">Female</option>
+                                <option value="male">Male</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <div class=" form-group mt-1">
+                            <label for="date">Date of Birth<i class="fa fa-address-card-o" aria-hidden="true"></i></label>
+                            <input type="date" name="date" id="dateOfBirth" class="form-control" placeholder="JohnDoe@epicmail.com">
+                        </div>
+                        <!-- <div class="form-group mt-1">
+                            <input type="radio" name="female" id="femaleradio">
+                            <label class="labelfontradio" for="female">Female</label>
+                            <input type="radio" name="male" id="maleradio">
+                            <label class="labelfontradio" for="male">Male</label>
+                        </div> -->
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <div class="form-group mt-1 mr-4">
+                            <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+                        </div>
+                        <div class="form-group mt-1">
+                            <input type="password" class="form-control" name="cnfpassword" id="cnfpassword" placeholder="Confirm Password">
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-end my-1">
+                        <input type="submit" value="Register" onclick="register()" class="btn bg-blue mb-2" id="registerSubmit">
+                    </div>
+                </form>
+
+                <div class="d-flex justify-content-end">
+                    <small class="">Already have an acount? <span class="text-blue"> <a href="index.html">Sign In</a></span></small>
+                </div>
+            </div>
+        </section>
+        <footer class="footer">
+            <div class="d-flex justify-content-center">
+                <p class="copyright">
+                    Patrick Okuns<i class="fas fa-copyright"></i> 2019
+                </p>
+            </div>
+        </footer>
+        <div class="d-none">
+            <textarea class="d-none" id="editor1"></textarea>
+        </div>
+    </main>
+    <script src="./assets/js/epichttp.js"></script>
+    <script src="./assets/js/ui.js"></script>
+    <script src="./assets/js/classes.js"></script>
+    <script src="./assets/js/register.js"></script>
+</body>
+
+</html>

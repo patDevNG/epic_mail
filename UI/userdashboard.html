@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Epic Mail</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/main.css">
+
+</head>
+
+<body>
+    <main class="d-flex flex-column justify-content-between">
+        <nav class="">
+            <header>
+                <div class="d-flex justify-content-between">
+                    <div class="epic-mail">
+                        <h1 title="EpicMail"><a href="/epic_mail/UI/index.html" class="header-title">EpicMail</a></h1>
+                    </div>
+                    <div class="epic-mail d-flex mx-5 mt-1" style="flex-grow:2">
+                        <input class="input-field form-control" type="text" placeholder="Search..." width="100%">
+
+                    </div>
+                    <div class="epic-mail d-flex mt-3">
+                        <span>
+                            okunspatrick@epicmail.com
+                        </span>
+                    </div>
+                    <div class="epic-mail mx-2">
+                        <a href="#"><img src="./assets/images/boss.svg" class="responsive-img" width="40px" height="40px"></a>
+                        <!-- <div class="dropdown">
+                            <img src="./assets/images/caret-down.svg" class="responsive-img" width="18px" height="18px">
+                            <div class="dropdown-content">
+                                <a href="#">Profile</a>
+                                <a href="#">Log Out</a>
+                            </div>
+                        </div> -->
+
+                    </div>
+                    <div class="epic-mail d-flex mt-2 mx-5 ">
+                        <a href="#index.html" class="logout"><i class="fas fa-2x fa-sign-out-alt"></i></a>
+                        <!-- <img src="./assets/images/logout.svg" class="responsive-img" width="30px" height="30px"></a> -->
+                    </div>
+                </div>
+            </header>
+        </nav>
+        <section class="wrapper">
+            <!-- Sidebar  -->
+            <nav id="sidebar" class="active">
+                <!-- <div class="sidebar-header">
+                    <h3><img src="./assets/images/fullenvelope.svg" width="50px" height="50px" class="responsive-image"></h3>
+                    <strong><img src="./assets/images/fullenvelope.svg" width="40px" height="40px" class="responsive-image"></strong>
+                </div> -->
+
+                <ul class="list-unstyled components">
+                    <li class="pb-3">
+                        <a href="#" aria-expanded="false" class="container" id="myBtn" onclick="displayBlock()">
+                            <span class="hide">New Message</span>
+                            <img class="responsive-image mssgicon fn" src="./assets/images/newmessage.svg" width="30px"
+                                height="30px">
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="#" aria-expanded="false" class="container">
+                            <span class="hide">Inbox <small class="red-badge ml-1">5</small> </span>
+                            <img class="mssgicon fn responsive-image" src="./assets/images/inbox.svg" width="30px"
+                                height="30px">
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#" aria-expanded="false" class="container">
+                            <span class="hide">Sent</span>
+                            <img class="mssgicon fn responsive-image" src="./assets/images/sentmail.svg" width="30px"
+                                height="30px">
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#" aria-expanded="false" class="container">
+                            <span class="hide">Draft</span>
+                            <img class="mssgicon fn responsive-image" src="./assets/images/draft.svg" width="30px"
+                                height="30px">
+                        </a>
+                    </li>
+                    <li class="">
+                            <a href="#" aria-expanded="false" class="container">
+                                <span class="hide">Starred</span>
+                                <img class="mssgicon fn responsive-image" src="./assets/images/starredmssg.svg" width="30px"
+                                    height="30px">
+                            </a>
+                        </li>
+                    <li class="">
+                        <a href="#" aria-expanded="false" class="container">
+                            <span class="hide">Trash</span>
+                            <img class="mssgicon fn responsive-image" src="./assets/images/dustbin.svg" width="30px"
+                                height="30px">
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- Page Content  -->
+            <div id="content" class="d-flex">
+                <div id="content-1" class="p-1 overflow-y blue-scrollbar d-flex flex-column justify-content-start"
+                    style="width: 50%; height: 80vh">
+                    <div class="d-flex justify-content-between p-2">
+                        <div class=" d-inline">
+                            <input type="checkbox" name="allDelete" id="allDelete">
+                            <label for="allDelete"><small>Mark All</small></label>
+                        </div>
+                        <div class="fr d-inline">
+                            <small class="d-inline">Show Unread Only</small>
+                            <div class="onoffswitch">
+                                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch">
+                                <label class="onoffswitch-label" for="myonoffswitch"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wrapper">
+                        <table class="p-2" width="100%">
+                            <tr class="d-flex justify-content-between hoverable bg-light p-3" width="100%">
+                                <td class="d-flex">
+                                    <form>
+                                        <div>
+                                            <input type="checkbox" id="index${i}" value="check">
+                                            <label for="index${i}"></label>
+                                        </div>
+
+                                        <div>
+                                            <input class="star" type="checkbox" title="favourite message">
+                                        </div>
+
+                                    </form>
+                                </td>
+                                <td class="d-flex">
+                                    <h5>
+                                        <span class="">
+                                            Jude Okafor
+                                        </span>
+                                    </h5>
+                                </td>
+                                <td class="d-flex">
+                                    <div>
+                                        <h5 class="message-title">
+                                            Project Epic Mail Feedback
+                                        </h5>
+                                        <p class="message message-body">
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elits
+                                        </p>
+                                    </div>
+                                </td>
+                                <td class="d-flex">
+                                    <p class="text-center"> 25th Feb, 2019 </p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div id="content-2" class="p-2 mx-auto overflow-y blue-scrollbar" style="width: 50%; height: 80vh">
+                    <div class="d-flex justify-content-between">
+                        <div class="">
+                            <a href="#" class="tooltip"><img src="./assets/images/boss.svg" width="25px" class="mx-1"
+                                    height="25px">
+                            </a>
+                            <span> <label> from:</label> <small class="sender-name">Jude Okafor</small></span>
+
+                        </div>
+                        <div class="d-flex justify-content-around">
+                            <div>
+                                <a href="#" class="tooltip"><img src="./assets/images/reply.svg" width="20px" class="mx-2"
+                                        height="20px" title="reply">
+                                    <!-- <span class="tooltiptext">Reply</span> -->
+                                </a>
+                            </div>
+                            <div>
+                                <a href="#" class="tooltip"><img src="./assets/images/forward.svg" width="20px" class="mx-2"
+                                        height="20px" title="forward">
+                                    <!-- <span class="tooltiptext">forward</span> -->
+                                </a>
+                            </div>
+                            <div>
+                                <a href="#" class="tooltip"><img src="./assets/images/dustbin.svg" width="20px" class="mx-2"
+                                        height="20px" title="delete">
+                                    <!-- <span class="tooltiptext">delete</span> -->
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="mails ">
+                        <h3 class="message-title d-inline mt-2">Project Epic Mail Feedback</h3>
+                        <span class="fr d-inline">
+                            <small>
+                                <strong>
+                                    6.03am
+                                </strong>
+                            </small>
+                        </span>
+                        <p class="message p-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum nihil
+                            dolorum a
+                            quasi ipsa
+                            blanditiis quibusdam sequi asperiores, officiis perspiciatis. Tempore quaerat, quas id
+                            quia possimus cumque unde,
+                            maxime mollitia, atque autem minus accusamus! Ad, at doloremque!
+                            Quis perspiciatis voluptatibus aspernatur ea nostrum,
+                            animi aliquam assumenda asperiores, consequuntur voluptate
+                            non atque distinctio. Sint.
+                        </p>
+                        <p class="message p-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum nihil
+                            dolorum a
+                            quasi ipsa
+                            blanditiis quibusdam sequi asperiores, officiis perspiciatis. Tempore quaerat, quas id
+                            quia possimus cumque unde,
+                            maxime mollitia, atque autem minus accusamus! Ad, at doloremque!
+                            Quis perspiciatis voluptatibus aspernatur ea nostrum,
+                            animi aliquam assumenda asperiores, consequuntur voluptate
+                            non atque distinctio. Sint.
+                        </p>
+                        <div class="w-80 border-brown my-4">
+                            <hr>
+                        </div>
+                        <div class="w-80 container my-2">
+                            <p class="black-text">
+                                Click here to <a href="#"><span class="text-light-brown">reply</span></a> or <a href="#"><span
+                                        class="text-light-brown">forward</span></a>
+                                this message
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="">
+            <div class="d-flex justify-content-center">
+                <p class="copyright">
+                    Patrick Okuns<i class="fas fa-copyright"></i> 2019
+                </p>
+            </div>
+        </footer>
+
+        <!-- The modal -->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <div class="d-flex">
+                    <div class=" w-50">
+                        <h3 class="text-center">New Message</h3>
+                            
+                    </div>
+                    <div class="fr">
+                            <span class="close"><img src="./assets/images/x-button.svg" width="18px" height="18px"></span>
+                    </div>
+                </div>
+                
+                <section class="container">
+                    <form id="newMessage">
+                        <div class=" form-group">
+                            <label for="to">To: <i class="fa fa-address-card-o" aria-hidden="true"></i></label>
+                            <input type="text" name="to" id="to" class="form-control">
+                        </div>
+                        <div class=" form-group">
+                            <label for="subject">Subject: <i class="fa fa-address-card-o" aria-hidden="true"></i></label>
+                            <input type="text" name="subject" id="subject" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="editor" id="editor" class="editor form-control" placeholder="Message here...">
+                             </textarea>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <button onclick="cancelMessage()" for="modal" id="cancelbutton" class="button red-button">
+                                Cancel
+                                <img class="" src="./assets/images/email.svg" width="15px" height="15px">
+                            </button>
+                            <button onclick="saveDraft()" class="button blue-button" id="savedraft">
+                                Save
+                                <img src="./assets/images/mail-black-envelope-symbol.svg" width="15px" height="15px">
+                            </button>
+                            <button onclick="submitMssg()" class="button green-button" target="_parent" id="newmessage">
+                                Send
+                                <img src="./assets/images/sendmail.svg" width="15px" height="15px">
+                            </button>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
+
+    </main>
+    <script src="./assets/js/epichttp.js"></script>
+    <script src="./assets/js/classes.js"></script>
+    <script src="./assets/js/ui.js"></script>
+    <script src="./assets/js/user.js"></script>
+</body>
+
+</html>
