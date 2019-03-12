@@ -5,32 +5,21 @@ const messageStore = require('../data/message');
 
 module.exports = {
   sendMessage: (req, res) => {
-    let messageId = messageStore.length;
-        const sendersId = req.body.senderId;
-        const reciversMail = req.body.recieversMail;
-        const createdOn = Date.now();
-        const subject = req.body.subject;
-        const messageBody = req.body.message;
-        let status = req.body.status;
+    const messageData = req.body;
+    const message = new Message(
+      messageData.messageId,
+      messageData.createdOn,
+      messageData.subject,
+      messageData.message,
+      messageData.parentMessageId,
+      messageData.status,
+      messageData.senderId,
+      messageData.recieverId,
+    );
   
-        const reciever = userStore.find(reciever => reciever.email === reciversMail);
-        if (reciever === undefined) {
-            res.status(401).json({'status': '401', 'Message': 'Email Does not Exist'})
-        }else{
-
-        const message = new Message(
-          messageId,
-          createdOn,
-          subject,
-          message,
-          parentMessageId,
-          status,
-          senderId,
-          reciever.id,
-        );
     message.messageId = messageStore.length;
     message.createdOn = Date.now();
-    console.log(message);
+    
     
     
     if (message.status === 'sent' || message.status ==='read'){
@@ -42,9 +31,14 @@ module.exports = {
       messageStore.push(message);
          res.json({'message':'Message Saved', 'status':'200'});
     }
-  }
+  
     
   }
 },
 
+getAllRecivedMessages:(req,res)=>{
+  data = messageStore.filter(recievedMessages => recievedMessages.recieverId == req.params.id);
+res.status(200).json({'status':200, data})
+
+}
 }
