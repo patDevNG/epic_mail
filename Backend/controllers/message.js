@@ -35,7 +35,7 @@ module.exports = {
 
     getAllRecivedMessages: (req, res) => {
         data = messageStore.filter(
-            recievedMessages => recievedMessages.recieverId == req.params.id
+            recievedMessages => recievedMessages.recieverId == req.params.id 
         );
         res
             .status(200)
@@ -43,7 +43,12 @@ module.exports = {
 
     },
     getUnreadMeassages: (req,res)=>{
-      data = messageStore.filter(unreadMessages =>unreadMessages.status === 'unread');
+      data = messageStore.filter(unreadMessages =>(unreadMessages.status === 'unread' && unreadMessages.recieverId === req.params.id));
+      res.status(200).json({'status':200,data});
+    },
+    getSentMessages:(req,res)=>{
+      data = messageStore.filter(sentMessages => sentMessages.senderId === req.params.id)  
       res.status(200).json({'status':200,data});
     }
+
 }
