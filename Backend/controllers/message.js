@@ -49,6 +49,11 @@ module.exports = {
     getSentMessages:(req,res)=>{
       data = messageStore.filter(sentMessages => sentMessages.senderId === req.params.id)  
       res.status(200).json({'status':200,data});
+    },
+
+    getASpecificMail:(req,res)=>{
+      data = messageStore.filter(specificMail => specificMail.messageId === req.params.id);
+      res(200).json({'status':200, data});
     }
 
 }
