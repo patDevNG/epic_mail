@@ -21,7 +21,7 @@ describe('Testing the Auth Route',()=>{
         });
         chai.expect(res).to.have.status(201);
         chai.expect(res.body).to.be.a('object');
-        chai.expect(res.body).to.have.property('message');
+        chai.expect(res.body).to.have.property('token');
         
         });
     });
@@ -43,4 +43,17 @@ describe('Testing the Auth Route',()=>{
         
         });
     });
+    describe('Test the Signup Endpoint', ()=>{
+        it('Should throw an error for an unregistered email', async () => {
+        const res = await chai.request(server).post('/api/v1/auth/login/').type('form').send({
+            "email":"e@a.com",
+	"password":"123"
+	
+        });
+        chai.expect(res).to.have.status(401);
+        chai.expect(res.body).to.have.property('message');
+        
+        });
+    });
 });
+

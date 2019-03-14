@@ -23,43 +23,21 @@ export default class SignUpController{
     
         );
         
-   
-     
-        // const userData = {};
-        // userData.id = data.length;
-        // userData.firstName = req.body.firstName;
-        // userData.lastName = req.body.lastName;
-        // userData.email = req.body.email;
-        // userData.phoneNumber = req.body.phoneNumber;
-        // userData.country = req.body.country;
-        // userData.gender = req.body.gender
-        // userData.password =hash
-          
-      
-        
-        
-
-        if (!data.find(newUser => newUser.email === userData.email)) {
+    if (!data.find(newUser => newUser.email === userData.email)) {
          bcrypt.genSalt(10, function(err, salt) {
             bcrypt.hash(user.password, salt, function(err, hash) {
                          
-                        console.log(hash);
-                         user.password = hash;
-                        data.push(user);
-                        console.log(user);
-                        const payload = { subject: user._id };
-          const token = jwt.sign(payload, 'secretkey');
-
-          
-        return res.status(201).json({'status':201, user, 'message':'Register Successful' });
+    console.log(hash); 
+    user.password = hash;
+    data.push(user);
+    console.log(user);
+    const payload = { subject: user._id };
+    const token = jwt.sign(payload, 'secretkey');
+    return res.status(201).json({'status':201, token });
                 });
             });
-        
-           
-          
-        } else {
-    
-        return res.status(401).json({'message':'Email Already Exist', 'status':401});
+    } else {
+    return res.status(401).json({'message':'Email Already Exist', 'status':401});
         }
     
    }

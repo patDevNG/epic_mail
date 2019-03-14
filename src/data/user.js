@@ -14,7 +14,7 @@ module.exports =[
         "firstName": "Pat",
         "lastName": "Okuns",
         "country": "nigeria",
-        "phoneNumber": " jus@123.com",
+        "phoneNumber": " 1233",
         "dateOfBirth": "123",
         "gender": "Male",
         "email": "e@b.com",
