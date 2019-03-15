@@ -21,7 +21,7 @@ const PORT = process.env.PORT || 8080;
 
 
  const server = app.listen(PORT, () => {
-  console.log(`Server Started at Port: ${port}`);
+  console.log(`Server Started at Port: ${PORT}`);
 });
 
 export default server;
