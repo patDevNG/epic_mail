@@ -62,4 +62,11 @@ export default class MessageController {
         }
     }
   }
+  static getAllMessages(req,res){
+
+ 
+ 
+ let   recievedMessages = messageStore.filter(recievedMessages => recievedMessages.id === req.params.id);
+    res .status(200).json({'status': 200, recievedMessages})
+  }
 }
