@@ -27,10 +27,10 @@ export default class SignUpController{
          bcrypt.genSalt(10, function(err, salt) {
             bcrypt.hash(user.password, salt, function(err, hash) {
                          
-    console.log(hash); 
+    
     user.password = hash;
     data.push(user);
-    console.log(user);
+    
     const payload = { subject: user._id };
     const token = jwt.sign(payload, 'secretkey');
     return res.status(201).json({'status':201, token });
