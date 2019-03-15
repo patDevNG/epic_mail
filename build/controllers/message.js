@@ -83,44 +83,75 @@ function () {
   }, {
     key: "getAllMessages",
     value: function getAllMessages(req, res) {
-      this.evaluateUser = _user.default.find(function (dataBaseUser) {
-        return dataBaseUser.recieversId === req.params.id;
+      var evaluateUser = _user.default.find(function (evaluateUser) {
+        return evaluateUser.id === parseInt(req.params.id);
       });
+
       console.log(evaluateUser);
       res.status(200).json({
         'status': 200,
         evaluateUser: evaluateUser
       });
-    } //     static getAllMessages(req, res) {
-    //      const getAllMessages = messageStore.filter(recievedMsg => recievedMsg.recieversId ===req.params.id);
-    //      return res.status(200).json(getAllMessages)
-    //     }
-    //     static getSpecificMail(req, res) {
-    //        const specificMessages = messageStore.find(
-    //             specificMail => specificMail.messageId === req.params.id
-    //         );
-    //         res.status(200).json({'status': 200, specificMessages});
-    //     }
-    //     static getAllUreadMessages(req, res) {
-    //         let ureadMessages = (
-    //             unreadMessages => (unreadMessages.status === 'unread' && unreadMessages.recieversId === req.params.id)
+    }
+  }, {
+    key: "getAllMessages",
+    value: function getAllMessages(req, res) {
+      var getAllMessages = _message.default.filter(function (recievedMsg) {
+        return recievedMsg.recieversId === parseInt(req.params.id);
+      });
+
+      res.status(200).json({
+        'status': 200,
+        getAllMessages: getAllMessages
+      });
+    }
+  }, {
+    key: "getSpecificMail",
+    value: function getSpecificMail(req, res) {
+      var specificMessages = _message.default.find(function (specificMail) {
+        return specificMail.messageId === parseInt(req.params.id);
+      });
+
+      res.status(200).json({
+        'status': 200,
+        specificMessages: specificMessages
+      });
+    } // static getAllUreadMessages(req, res) {
+    //     const ureadMessages = (unreadMessages => ({
+    //         (
+    //  unreadMessages.status === 'unread' && unreadMessages.recieversId === parseInt(req.params.id)
     //         );
     //         res
     //             .status(200)
     //             .json({'status': 200, ureadMessages});
-    //     }
-    //     static getSentMessages(req,res){
-    //        const allsentMessagses= messageStore.filter(sentMessages => sentMessages.sendersId === req.params.id)  
-    //         res.status(200).json({'status':200,allsentMessagses});
-    // }
-    // static deleteAspecificMail(req, res) {
-    //   const  messagetoDelete = messageStore.filter(
-    //         specificMail => specificMail.messageId=== req.params.id
-    //     );
-    //     messageStore.pop(messagetoDelete);
-    //     res(200).json({'status': 200, 'message':'Message Deleted'});
-    // }
+    //     }}
 
+  }, {
+    key: "getSentMessages",
+    value: function getSentMessages(req, res) {
+      var allsentMessagses = _message.default.filter(function (sentMessages) {
+        return sentMessages.sendersId === parseInt(req.params.id);
+      });
+
+      res.status(200).json({
+        'status': 200,
+        allsentMessagses: allsentMessagses
+      });
+    }
+  }, {
+    key: "deleteAspecificMail",
+    value: function deleteAspecificMail(req, res) {
+      var messagetoDelete = _message.default.filter(function (specificMail) {
+        return specificMail.messageId === parse(req.params.id);
+      });
+
+      _message.default.pop(messagetoDelete);
+
+      res(200).json({
+        'status': 200,
+        'message': 'Message Deleted'
+      });
+    }
   }]);
 
   return MessageController;

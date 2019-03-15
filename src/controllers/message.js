@@ -6,7 +6,6 @@ import messageModel from '../model/message';
 /* Imports the datastructure that holds users and messages
 before continuing */
 
-
 export default class MessageController {
     static sendMessage(req, res) {
         const messageData = req.body;
@@ -54,56 +53,73 @@ export default class MessageController {
                     .json({'status': 201, sentMessage, 'message': 'Message Saved Successfully'})
             } else {
                 if (!evaluateUser) {
-                    res.status(401).json({'message': "Invalid Email"});
+                    res
+                        .status(401)
+                        .json({'message': "Invalid Email"});
                 }
             }
         }
     }
- static getAllMessages(req,res){
+    static getAllMessages(req, res) {
+
+        const evaluateUser = user.find(evaluateUser => {
+
+            return evaluateUser.id === parseInt(req.params.id);
+
+        });
+        console.log(evaluateUser);
+
+        res
+            .status(200)
+            .json({'status': 200, evaluateUser})
+
+    }
+
+    static getAllMessages(req, res) {
+        const getAllMessages = messageStore.filter(recievedMsg => {
+            return recievedMsg.recieversId === parseInt(req.params.id)
+        });
+
+        res
+            .status(200)
+            .json({'status': 200, getAllMessages})
+    }
+
+    static getSpecificMail(req, res) {
+        const specificMessages = messageStore.find(specificMail => {
+            return specificMail.messageId === parseInt(req.params.id)
+        });
+        res
+            .status(200)
+            .json({'status': 200, specificMessages});
+    }
+
+    // static getAllUreadMessages(req, res) {
+    //     const ureadMessages = (unreadMessages => ({
+    //         (
+    //  unreadMessages.status === 'unread' && unreadMessages.recieversId === parseInt(req.params.id)
+    //         );
+    //         res
+    //             .status(200)
+    //             .json({'status': 200, ureadMessages});
+    //     }}
     
-     this.evaluateUser = user.find(dataBaseUser => dataBaseUser.recieversId === req.params.id);
-     console.log(evaluateUser);
-     
-        res .status(200).json({'status': 200, evaluateUser})
-
-    
-     
-    
- }
 
 
-//     static getAllMessages(req, res) {
-//      const getAllMessages = messageStore.filter(recievedMsg => recievedMsg.recieversId ===req.params.id);
-//      return res.status(200).json(getAllMessages)
-     
-//     }
+        static getSentMessages(req, res) {
+            const allsentMessagses = messageStore.filter(sentMessages => {
+                return sentMessages.sendersId === parseInt(req.params.id)
+            })
+            res
+                .status(200)
+                .json({'status': 200, allsentMessagses});
 
-//     static getSpecificMail(req, res) {
-//        const specificMessages = messageStore.find(
-//             specificMail => specificMail.messageId === req.params.id
-//         );
-//         res.status(200).json({'status': 200, specificMessages});
-//     }
-
-//     static getAllUreadMessages(req, res) {
-//         let ureadMessages = (
-//             unreadMessages => (unreadMessages.status === 'unread' && unreadMessages.recieversId === req.params.id)
-//         );
-//         res
-//             .status(200)
-//             .json({'status': 200, ureadMessages});
-//     }
-
-//     static getSentMessages(req,res){
-//        const allsentMessagses= messageStore.filter(sentMessages => sentMessages.sendersId === req.params.id)  
-//         res.status(200).json({'status':200,allsentMessagses});
-
-// }
-// static deleteAspecificMail(req, res) {
-//   const  messagetoDelete = messageStore.filter(
-//         specificMail => specificMail.messageId=== req.params.id
-//     );
-//     messageStore.pop(messagetoDelete);
-//     res(200).json({'status': 200, 'message':'Message Deleted'});
-// }
-}
+        }
+        static deleteAspecificMail(req, res) {
+            const messagetoDelete = messageStore.filter(specificMail => {
+                return specificMail.messageId === parse(req.params.id)
+            });
+            messageStore.pop(messagetoDelete);
+            res(200).json({'status': 200, 'message': 'Message Deleted'});
+        }
+    }
