@@ -17,10 +17,10 @@ app.use(bodyParser.json());
 // app.use('/api/v1',messages);
 app.use('/', routes);
 
-// const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8080;
 
-const port =  8080;
- const server = app.listen(port, () => {
+
+ const server = app.listen(PORT, () => {
   console.log(`Server Started at Port: ${port}`);
 });
 
