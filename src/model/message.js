@@ -1,5 +1,5 @@
 
-class Message {
+export default class Message {
     constructor(
       messageId,
       createdOn,
@@ -7,8 +7,8 @@ class Message {
       message,
       parentMessageId,
       status,
-      senderId,
-      recieverId,
+      recieversEmail,
+      sendersEmail
     ) {
       this.messageId = messageId;
       this.createdOn = createdOn;
@@ -16,10 +16,11 @@ class Message {
       this.message = message;
       this.parentMessageId = parentMessageId;
       this.status = status;
-      this.senderId = senderId;
-      this.recieverId = recieverId;
+      this.recieversEmail = recieversEmail,
+      this.sendersEmail = sendersEmail
+      
     }
   }
   
-  module.exports = Message;
+  
   

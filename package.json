@@ -1,0 +1,71 @@
+{
+  "name": "epic_mail",
+  "version": "1.0.0",
+  "description": "https://travis-ci.org/patDevNG/epic_mail.svg?branch=master [![Coverage Status](https://coveralls.io/repos/github/patDevNG/epic_mail/badge.svg?branch=master)](https://coveralls.io/github/patDevNG/epic_mail?branch=master)",
+  "main": "app.js",
+  "scripts": {
+    "test": "cross-env NODE_ENV=test nyc --reporter=text --reporter=html mocha src/test --timeout 25000 --exit",
+    "dev": "nodemon --exec babel-node src/app.js",
+    "clean": "rm -rf build && mkdir build",
+    "build-babel": "babel src --out-dir build",
+    "build": "npm run clean && npm run build-babel",
+    "start": "node ./build/app.js",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/patDevNG/epic_mail.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/patDevNG/epic_mail/issues"
+  },
+  "homepage": "https://github.com/patDevNG/epic_mail#readme",
+  "dependencies": {
+    "@babel/polyfill": "^7.2.5",
+    "babel-plugin-istanbul": "^5.1.1",
+    "bcryptjs": "^2.4.3",
+    "chai": "^4.2.0",
+    "cors": "^2.8.5",
+    "coveralls": "^3.0.3",
+    "cross-env": "^5.2.0",
+    "express": "^4.16.4",
+    "install": "^0.12.2",
+    "jsonwebtoken": "^8.5.0",
+    "mocha": "^6.0.2",
+    "morgan": "^1.9.1",
+    "npm": "^6.9.0",
+    "nyc": "^13.3.0",
+    "swagger-ui-express": "^4.0.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.4",
+    "@babel/node": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/register": "^7.0.0",
+    "chai-http": "^4.2.1"
+  },
+  "engines": {
+    "node": "10.5.0"
+  },
+  "standard": {
+    "env": [
+      "mocha"
+    ]
+  },
+  "nyc": {
+    "require": [
+      "@babel/register",
+      "@babel/polyfill"
+    ],
+    "reporter": [
+      "lcov",
+      "text"
+    ],
+    "sourceMap": false,
+    "instrument": false
+  }
+}
