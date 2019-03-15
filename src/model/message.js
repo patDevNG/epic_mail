@@ -8,7 +8,9 @@ export default class Message {
       parentMessageId,
       status,
       recieversEmail,
-      sendersEmail
+      sendersEmail,
+      recieversId,
+      sendersId,
     ) {
       this.messageId = messageId;
       this.createdOn = createdOn;
@@ -17,7 +19,9 @@ export default class Message {
       this.parentMessageId = parentMessageId;
       this.status = status;
       this.recieversEmail = recieversEmail,
-      this.sendersEmail = sendersEmail
+      this.sendersEmail = sendersEmail,
+      this.recieversId = recieversId,
+      this.sendersId = sendersId
       
     }
   }
