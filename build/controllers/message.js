@@ -23,8 +23,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 /* Imports the datastructure that holds users and messages
 before continuing */
-_bodyParser.default.json();
-
 var MessageController =
 /*#__PURE__*/
 function () {
@@ -85,63 +83,44 @@ function () {
   }, {
     key: "getAllMessages",
     value: function getAllMessages(req, res) {
-      var recievedMessages = _message.default.filter(function (recievedMessages) {
-        return recievedMessages.recieversId === req.params.id;
+      this.evaluateUser = _user.default.find(function (dataBaseUser) {
+        return dataBaseUser.recieversId === req.params.id;
       });
-
+      console.log(evaluateUser);
       res.status(200).json({
         'status': 200,
-        recievedMessages: recievedMessages
+        evaluateUser: evaluateUser
       });
-    }
-  }, {
-    key: "getSpecificMail",
-    value: function getSpecificMail(req, res) {
-      specificMessages = _message.default.filter(function (specificMail) {
-        return specificMail.messageId === req.params.id;
-      });
-      res(200).json({
-        'status': 200,
-        specificMessages: specificMessages
-      });
-    }
-  }, {
-    key: "getAllUreadMessages",
-    value: function getAllUreadMessages(req, res) {
-      var ureadMessages = function ureadMessages(unreadMessages) {
-        return unreadMessages.status === 'unread' && unreadMessages.recieverId === req.params.id;
-      };
+    } //     static getAllMessages(req, res) {
+    //      const getAllMessages = messageStore.filter(recievedMsg => recievedMsg.recieversId ===req.params.id);
+    //      return res.status(200).json(getAllMessages)
+    //     }
+    //     static getSpecificMail(req, res) {
+    //        const specificMessages = messageStore.find(
+    //             specificMail => specificMail.messageId === req.params.id
+    //         );
+    //         res.status(200).json({'status': 200, specificMessages});
+    //     }
+    //     static getAllUreadMessages(req, res) {
+    //         let ureadMessages = (
+    //             unreadMessages => (unreadMessages.status === 'unread' && unreadMessages.recieversId === req.params.id)
+    //         );
+    //         res
+    //             .status(200)
+    //             .json({'status': 200, ureadMessages});
+    //     }
+    //     static getSentMessages(req,res){
+    //        const allsentMessagses= messageStore.filter(sentMessages => sentMessages.sendersId === req.params.id)  
+    //         res.status(200).json({'status':200,allsentMessagses});
+    // }
+    // static deleteAspecificMail(req, res) {
+    //   const  messagetoDelete = messageStore.filter(
+    //         specificMail => specificMail.messageId=== req.params.id
+    //     );
+    //     messageStore.pop(messagetoDelete);
+    //     res(200).json({'status': 200, 'message':'Message Deleted'});
+    // }
 
-      res.status(200).json({
-        'status': 200,
-        ureadMessages: ureadMessages
-      });
-    }
-  }, {
-    key: "getSentMessages",
-    value: function getSentMessages(req, res) {
-      allsentMessagses = _message.default.filter(function (sentMessages) {
-        return sentMessages.senderId === req.params.id;
-      });
-      res.status(200).json({
-        'status': 200,
-        allsentMessagses: allsentMessagses
-      });
-    }
-  }, {
-    key: "deleteAspecificMail",
-    value: function deleteAspecificMail(req, res) {
-      messagtoDelete = _message.default.filter(function (specificMail) {
-        return specificMail.messageId === req.params.id;
-      });
-
-      _message.default.pop(messagetoDelete);
-
-      res(200).json({
-        'status': 200,
-        'message': 'Message Deleted'
-      });
-    }
   }]);
 
   return MessageController;

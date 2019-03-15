@@ -25,11 +25,10 @@ app.use((0, _morgan.default)('dev'));
 app.use((0, _cors.default)());
 app.use(_bodyParser.default.json()); // app.use('/api/v1',messages);
 
-app.use('/', _v.default); // const PORT = process.env.PORT || 8080;
-
-var port = 8080;
-var server = app.listen(port, function () {
-  console.log("Server Started at Port: ".concat(port));
+app.use('/', _v.default);
+var PORT = process.env.PORT || 8080;
+var server = app.listen(PORT, function () {
+  console.log("Server Started at Port: ".concat(PORT));
 });
 var _default = server;
 exports.default = _default;
