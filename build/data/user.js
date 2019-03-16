@@ -1,10 +1,4 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _default = [{
+export default [{
   "id": 0,
   "firstName": "Pat",
   "lastName": "Okuns",
@@ -24,4 +18,3 @@ var _default = [{
   "email": "e@b.com",
   "password": "$2a$10$cOhesEWa3vvr14F1h5nJ3Olvw1m4yqMVKYsD32mR68C.id50sqtA2"
 }];
-exports.default = _default;

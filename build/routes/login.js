@@ -1,18 +1,5 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _express = _interopRequireDefault(require("express"));
-
-var _login = _interopRequireDefault(require("../controllers/login"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var router = _express.default.Router();
-
-router.post('/', _login.default.login);
-var _default = router;
-exports.default = _default;
+import express from 'express';
+import loginController from '../controllers/login';
+const router = express.Router();
+router.post('/', loginController.login);
+export default router;
