@@ -1,5 +1,5 @@
 export default 
-{	"extends": "airbnb-base",
+{	"extends": "airbnb",
 plugins:["import"],
 "rules":{	
     "rules":{

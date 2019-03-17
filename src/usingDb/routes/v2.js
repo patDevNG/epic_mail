@@ -3,6 +3,6 @@ import route from './root'
 
 const router = express.Router();
 
-router.use('/api/v1',route)
+router.use('/api/v2',route)
 
 export default router;
