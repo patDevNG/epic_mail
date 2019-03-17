@@ -1,6 +1,6 @@
-module.exports = 
+export default 
 {	"extends": "airbnb-base",
-plugins:["import"],	plugins:["import"],
+plugins:["import"],
 "rules":{	
     "rules":{
     "no-console":"off",		
@@ -10,7 +10,7 @@ plugins:["import"],	plugins:["import"],
     "no-unused-vars":0,		
     "no-unused-vars":0,
     "max-len":0,		
-    "max-len":0,
+    "max-len":0, 
     "linebreak-style": 0,		
     "linebreak-style": 0
 },
