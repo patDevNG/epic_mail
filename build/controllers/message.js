@@ -1,34 +1,49 @@
-import bodyParser from 'body-parser';
-import user from '../data/user';
-import messageStore from '../data/message';
-import messageModel from '../model/message';
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _bodyParser = _interopRequireDefault(require("body-parser"));
+
+var _user = _interopRequireDefault(require("../data/user"));
+
+var _message = _interopRequireDefault(require("../data/message"));
+
+var _message2 = _interopRequireDefault(require("../model/message"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
 /* Imports the datastructure that holds users and messages
 before continuing */
+var MessageController =
+/*#__PURE__*/
+function () {
+  function MessageController() {
+    _classCallCheck(this, MessageController);
+  }
 
-export default class MessageController {
-  static sendMessage(req, res) {
-    const messageData = req.body;
-    const newMessages = new messageModel(messageData.messageId = messageStore.length, messageData.createdOn = Date.now, messageData.subject, messageData.message, messageData.parentMessageId, messageData.status, messageData.recieversEmail, messageData.sendersEmail);
-    let evaluateUser = user.find(dataBaseUser => dataBaseUser.email === newMessages.recieversEmail);
+  _createClass(MessageController, null, [{
+    key: "sendMessage",
+    value: function sendMessage(req, res) {
+      var messageData = req.body;
+      var newMessages = new _message2.default(messageData.messageId = _message.default.length, messageData.createdOn = Date.now, messageData.subject, messageData.message, messageData.parentMessageId, messageData.status, messageData.recieversEmail, messageData.sendersEmail);
 
-    if (evaluateUser && newMessages.status === 'sent') {
-      messageStore.push(newMessages);
-      const sentMessage = {
-        messageId: newMessages.messageId,
-        createdOn: newMessages.createdOn,
-        subject: newMessages.subject,
-        message: newMessages.message,
-        status: newMessages.status
-      };
-      res.status(201).json({
-        'status': 201,
-        sentMessage,
-        'message': 'Message Sent Successfully'
+      var evaluateUser = _user.default.find(function (dataBaseUser) {
+        return dataBaseUser.email === newMessages.recieversEmail;
       });
-    } else {
-      if (newMessages.status === 'draft' || newMessages.recieversEmail === '') {
-        messageStore.push(newMessages);
-        const sentMessage = {
+
+      if (evaluateUser && newMessages.status === 'sent') {
+        _message.default.push(newMessages);
+
+        var sentMessage = {
           messageId: newMessages.messageId,
           createdOn: newMessages.createdOn,
           subject: newMessages.subject,
@@ -37,78 +52,109 @@ export default class MessageController {
         };
         res.status(201).json({
           'status': 201,
-          sentMessage,
-          'message': 'Message Saved Successfully'
+          sentMessage: sentMessage,
+          'message': 'Message Sent Successfully'
         });
       } else {
-        if (!evaluateUser) {
-          res.status(401).json({
-            'message': "Invalid Email"
+        if (newMessages.status === 'draft' || newMessages.recieversEmail === '') {
+          _message.default.push(newMessages);
+
+          var _sentMessage = {
+            messageId: newMessages.messageId,
+            createdOn: newMessages.createdOn,
+            subject: newMessages.subject,
+            message: newMessages.message,
+            status: newMessages.status
+          };
+          res.status(201).json({
+            'status': 201,
+            sentMessage: _sentMessage,
+            'message': 'Message Saved Successfully'
           });
+        } else {
+          if (!evaluateUser) {
+            res.status(401).json({
+              'message': "Invalid Email"
+            });
+          }
         }
       }
     }
-  }
+  }, {
+    key: "getAllMessages",
+    value: function getAllMessages(req, res) {
+      var evaluateUser = _user.default.find(function (evaluateUser) {
+        return evaluateUser.id === parseInt(req.params.id);
+      });
 
-  static getAllMessages(req, res) {
-    const evaluateUser = user.find(evaluateUser => {
-      return evaluateUser.id === parseInt(req.params.id);
-    });
-    console.log(evaluateUser);
-    res.status(200).json({
-      'status': 200,
-      evaluateUser
-    });
-  }
+      console.log(evaluateUser);
+      res.status(200).json({
+        'status': 200,
+        evaluateUser: evaluateUser
+      });
+    }
+  }, {
+    key: "getAllMessages",
+    value: function getAllMessages(req, res) {
+      var getAllMessages = _message.default.filter(function (recievedMsg) {
+        return recievedMsg.recieversId === parseInt(req.params.id);
+      });
 
-  static getAllMessages(req, res) {
-    const getAllMessages = messageStore.filter(recievedMsg => {
-      return recievedMsg.recieversId === parseInt(req.params.id);
-    });
-    res.status(200).json({
-      'status': 200,
-      getAllMessages
-    });
-  }
+      res.status(200).json({
+        'status': 200,
+        getAllMessages: getAllMessages
+      });
+    }
+  }, {
+    key: "getSpecificMail",
+    value: function getSpecificMail(req, res) {
+      var specificMessages = _message.default.find(function (specificMail) {
+        return specificMail.messageId === parseInt(req.params.id);
+      });
 
-  static getSpecificMail(req, res) {
-    const specificMessages = messageStore.find(specificMail => {
-      return specificMail.messageId === parseInt(req.params.id);
-    });
-    res.status(200).json({
-      'status': 200,
-      specificMessages
-    });
-  } // static getAllUreadMessages(req, res) {
-  //     const ureadMessages = (unreadMessages => ({
-  //         (
-  //  unreadMessages.status === 'unread' && unreadMessages.recieversId === parseInt(req.params.id)
-  //         );
-  //         res
-  //             .status(200)
-  //             .json({'status': 200, ureadMessages});
-  //     }}
+      res.status(200).json({
+        'status': 200,
+        specificMessages: specificMessages
+      });
+    } // static getAllUreadMessages(req, res) {
+    //     const ureadMessages = (unreadMessages => ({
+    //         (
+    //  unreadMessages.status === 'unread' && unreadMessages.recieversId === parseInt(req.params.id)
+    //         );
+    //         res
+    //             .status(200)
+    //             .json({'status': 200, ureadMessages});
+    //     }}
 
+  }, {
+    key: "getSentMessages",
+    value: function getSentMessages(req, res) {
+      var allsentMessagses = _message.default.filter(function (sentMessages) {
+        return sentMessages.sendersId === parseInt(req.params.id);
+      });
 
-  static getSentMessages(req, res) {
-    const allsentMessagses = messageStore.filter(sentMessages => {
-      return sentMessages.sendersId === parseInt(req.params.id);
-    });
-    res.status(200).json({
-      'status': 200,
-      allsentMessagses
-    });
-  }
+      res.status(200).json({
+        'status': 200,
+        allsentMessagses: allsentMessagses
+      });
+    }
+  }, {
+    key: "deleteAspecificMail",
+    value: function deleteAspecificMail(req, res) {
+      var messagetoDelete = _message.default.filter(function (specificMail) {
+        return specificMail.messageId === parse(req.params.id);
+      });
 
-  static deleteAspecificMail(req, res) {
-    const messagetoDelete = messageStore.filter(specificMail => {
-      return specificMail.messageId === parse(req.params.id);
-    });
-    messageStore.pop(messagetoDelete);
-    res(200).json({
-      'status': 200,
-      'message': 'Message Deleted'
-    });
-  }
+      _message.default.pop(messagetoDelete);
 
-}
+      res(200).json({
+        'status': 200,
+        'message': 'Message Deleted'
+      });
+    }
+  }]);
+
+  return MessageController;
+}();
+
+exports.default = MessageController;

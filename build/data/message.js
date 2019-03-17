@@ -1,4 +1,10 @@
-export default [{
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _default = [{
   'messageId': 0,
   'createdOn': 12344456767678,
   'subject': "hi",
@@ -52,3 +58,4 @@ export default [{
   "recieversId": 0,
   "sendersId": 3
 }];
+exports.default = _default;

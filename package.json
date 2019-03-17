@@ -37,6 +37,7 @@
     "morgan": "^1.9.1",
     "npm": "^6.9.0",
     "nyc": "^13.3.0",
+    "pg": "^7.9.0",
     "swagger-ui-express": "^4.0.2"
   },
   "devDependencies": {
