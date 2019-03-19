@@ -8,8 +8,6 @@ import data from '../data/user';
 export default class SignUpController{
     static signup (req,res){
         const userData = req.body;
-        // const salt = bcrypt.genSaltSync(10);
-        // const hash = bcrypt.hashSync(userData.password, salt);
         const user = new User(
           userData.id = data.length,
           userData.firstName,
@@ -24,8 +22,8 @@ export default class SignUpController{
         );
         
     if (!data.find(newUser => newUser.email === userData.email)) {
-         bcrypt.genSalt(10, function(err, salt) {
-            bcrypt.hash(user.password, salt, function(err, hash) {
+         bcrypt.genSalt(10, function(_err, salt) {
+            bcrypt.hash(user.password, salt, function(_err, hash) {
                          
     
     user.password = hash;

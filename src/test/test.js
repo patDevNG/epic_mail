@@ -14,7 +14,7 @@ describe('Testing the Auth Route',()=>{
             "firstName":"Pat",
 	"lastName":"Okuns",
 	"country":"nigeria",
-	"email":" jus@123.com",
+	"phoneNumber":" jus@123.com",
 	"dateOfBirth":"123",
 	"gender":"Male",
 	"email":"e@b.com",

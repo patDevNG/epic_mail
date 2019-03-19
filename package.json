@@ -4,6 +4,8 @@
   "description": "https://travis-ci.org/patDevNG/epic_mail.svg?branch=master [![Coverage Status](https://coveralls.io/repos/github/patDevNG/epic_mail/badge.svg?branch=master)](https://coveralls.io/github/patDevNG/epic_mail?branch=master)",
   "main": "app.js",
   "scripts": {
+    "migration": "babel-node ./src/model/migration.js --env",
+    "test1": "npm run migrations && cross-env NODE_ENV=test nyc --reporter=text --reporter=html mocha --recursive src/test --timeout 25000 --exit",
     "test": "cross-env NODE_ENV=test nyc --reporter=text --reporter=html mocha src/test --timeout 25000 --exit",
     "dev": "nodemon --exec babel-node src/app.js",
     "clean": "rm -rf build && mkdir build",
@@ -11,6 +13,7 @@
     "build": "npm run clean && npm run build-babel",
     "start": "node ./build/app.js",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
+   
   },
   "repository": {
     "type": "git",
@@ -32,12 +35,14 @@
     "dotenv": "^7.0.0",
     "express": "^4.16.4",
     "install": "^0.12.2",
+    "joi": "^14.3.1",
     "jsonwebtoken": "^8.5.0",
     "mocha": "^6.0.2",
     "morgan": "^1.9.1",
     "npm": "^6.9.0",
     "nyc": "^13.3.0",
     "pg": "^7.9.0",
+    "pg-format": "^1.0.4",
     "pg-pool": "^2.0.6",
     "swagger-ui-express": "^4.0.2"
   },
