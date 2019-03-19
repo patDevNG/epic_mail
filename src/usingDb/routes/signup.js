@@ -2,7 +2,7 @@ import express from 'express';
 const router = express.Router();
 import signUpController from '../controllers/signup'; 
 
-router.get('/',signUpController.signUp);
+router.post('/',signUpController.signUp);
 
 
 

@@ -62,16 +62,11 @@ export default class MessageController {
     }
     static getAllMessages(req, res) {
 
-        const evaluateUser = user.find(evaluateUser => {
-
-            return evaluateUser.id === parseInt(req.params.id);
-
-        });
-        console.log(evaluateUser);
+        const data = userStore
 
         res
             .status(200)
-            .json({'status': 200, evaluateUser})
+            .json({'status': 200, data});
 
     }
 
