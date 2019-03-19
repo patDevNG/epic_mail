@@ -52,7 +52,7 @@ export default class SignUpController {
             
          }
          catch(e){
-            console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@2@@', e);
+           
          }
 
 
