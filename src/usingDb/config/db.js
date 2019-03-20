@@ -23,7 +23,7 @@ pool.on('connect',()=>{
  const createATable =(queryText)=>{
 pool.query(queryText)
 .then (result=>{
-    console.log(result);
+    // console.log(result);
     })
  .catch(err=>{
      console.log(err);
@@ -62,7 +62,7 @@ const inbox = `CREATE TABLE IF NOT EXISTS inbox (
 )`;
 const group = `CREATE TABLE IF NOT EXISTS groups (
 groupid bigserial PRIMARY KEY UNIQUE NOT NULL,
-groupname VARCHAR(200) NOT NULL,
+name VARCHAR(200) NOT NULL,
 createdon TIMESTAMP,
 creator VARCHAR(200) REFERENCES users(email)
 )`;
@@ -86,6 +86,8 @@ createATable(messageQuery);
 createATable(inbox);
 createATable(group)
 createATable(groupMembers);
+
+
 
 
 
