@@ -7,7 +7,9 @@ queries.sent = 'INSERT INTO sent (messageID,createdOn,sendersEmail) VALUES($1,$2
 queries.sendMessages = 'INSERT INTO messages(subject,message,parentMessageId,sendersEmail,status) VALUES($1,$2,$3,$4,$5) RETURNING id';
 queries.populateInbox ='INSERT INTO inbox(messageId,receiversEmail,status) VALUES ($1,$2,$3)';
 queries.checkIfGroupExist = 'SELECT * FROM groups where name = $1'
-queries.createGroup ='INSERT INTO groups(name,createdon,creator) VALUES($1,$2,$3)';
+queries.createGroup ='INSERT INTO groups(name,createdon,creator) VALUES ($1,$2,$3)';
+queries.getAllGroupInfo ='SELECT * FROM groups';
+
 
 
 export default queries
