@@ -3,7 +3,8 @@ import db from '../config/db';
 import joi from 'joi';
 import schema from '../model/schema';
 import jwt from 'jsonwebtoken';
-import queries from '../config/queries'
+import queries from '../config/queries';
+import secret from '../config/secret'
 import dbhelpers from '../config/dbhelpers'
 
 /**
@@ -38,8 +39,8 @@ export default class SignUpController {
                         userData.phoneNumber, userData.gender,userData.email, userData.password]
                     const AddingUser = await db.query(queries.insertUsers,userTableValue);
         
-                    const payload = { subject: userData.id };
-                const token = jwt.sign(payload, 'secretkey');
+                    const payload = { subject: userData.email };
+                const token = jwt.sign(payload, secret.SECRET);
                 return res.status(201).json({'status':201, token, 'message':`Welcome ${userData.firstName}`});
                 }else{
                     return res.status(401).json({'status':400, 'message':'Email Already Exist'})
