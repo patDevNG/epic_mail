@@ -21,8 +21,8 @@ export default class LoginController {
                if(!validPassword){
                 return res.status(401).json({'status':200,'message':'Invalid Password'})
                }else{
-                const payload = { subject: userData.id };
-                const token = jwt.sign(payload, 'secretkey');
+                const payload = { subject: userData.email };
+                const token = jwt.sign(payload, process.env.SECRET);
                 return res.status(200).json({'status':200,token,'message':'Login Successful'})
                }
      

@@ -1,10 +1,11 @@
 import express from 'express';
 const router = express.Router();
-import groupController from '../controllers/group'
+import groupController from '../controllers/group';
+import authentication from '../middlewares/auth';
 
-router.post('/',groupController.createGroup);
-router.get('/',groupController.getAllGroupInfo);
-router.patch('/:id',groupController.editGroupName);
+router.post('/',authentication.verifyToken, groupController.createGroup);
+router.get('/', authentication.verifyToken, groupController.getAllGroupInfo);
+router.patch('/:id',authentication.verifyToken, groupController.editGroupName);
 
 
 

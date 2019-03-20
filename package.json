@@ -13,7 +13,6 @@
     "build": "npm run clean && npm run build-babel",
     "start": "node ./build/app.js",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
-   
   },
   "repository": {
     "type": "git",
@@ -28,6 +27,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.2.5",
     "babel-plugin-istanbul": "^5.1.1",
+    "babel-polyfill": "^6.26.0",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "coveralls": "^3.0.3",
