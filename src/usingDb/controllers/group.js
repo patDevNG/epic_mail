@@ -31,4 +31,17 @@ export default class GroupControllers{
        }
         
     }
+
+    static async getAllGroupInfo(req,res){
+       const {rows,rowCount} = await db.query(queries.getAllGroupInfo);
+       if(rowCount ===0){
+          res.status(400).json({'status':400, 'message':'No Record'});
+       }else{
+         const data = rows;
+         res.status(200).json({'status':200,data})
+       }
+       
+
+
+    }
 }
