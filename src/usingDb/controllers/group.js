@@ -41,7 +41,27 @@ export default class GroupControllers{
          res.status(200).json({'status':200,data})
        }
        
+    
 
-
+    }
+    static async editGroupName(req,res){
+     const groupId = req.params.id;
+     const name = req.body.name;
+     const creator = req.body.creator;
+     const evaluateCreator = await db.query(queries.checkGroupCreator,[creator,name])
+     if(evaluateCreator.rowCount!==1){
+     res.status(403).json({'status':403, 'Message':'You are not Authorize to Edit group name'})
+     }else{
+      
+      const {rows,rowCount} = await db.query(queries.checkIfGroupExist,[name]);
+      if(rowCount>0){
+         res.status(401).json({'status':401,'message':'Group Name Already Exist Choose another Name'})
+      }else{
+         const editGroupTableValue =[name,groupId,creator];
+         const {rows} = await db.query(queries.updateGroupName, editGroupTableValue);
+         return res.status(201).json({'status':201, 'message':`Group name updated to ${name}`});
+      }
+ 
+     }
     }
 }

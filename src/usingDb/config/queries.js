@@ -9,6 +9,8 @@ queries.populateInbox ='INSERT INTO inbox(messageId,receiversEmail,status) VALUE
 queries.checkIfGroupExist = 'SELECT * FROM groups where name = $1'
 queries.createGroup ='INSERT INTO groups(name,createdon,creator) VALUES ($1,$2,$3)';
 queries.getAllGroupInfo ='SELECT * FROM groups';
+queries.updateGroupName ='UPDATE groups SET name = $1 WHERE groupid = $2 AND creator = $3';
+queries.checkGroupCreator ='SELECT *FROM groups WHERE creator = $1 AND name =$2';
 
 
 
