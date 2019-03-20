@@ -5,6 +5,6 @@ const router = express.Router();
 
 
 router.use('/auth',auth);
-router.use('/messages',message);
+// router.use('/messages',message);
 
 export default router;

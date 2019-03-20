@@ -21,6 +21,15 @@ import Joi from 'joi';
         }
         return Joi.validate(user,schema);
     }
+
+    static message(message){
+        const schema ={
+            subject:Joi.string().min(3).required(),
+            message: Joi.string().min(3).required(),
+            email:Joi.string()
+        }
+        return Joi.validate(message,schema);
+    }
 }
 
 
