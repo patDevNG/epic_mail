@@ -12,13 +12,14 @@ const app = express();
 app.use(morgan('dev'));
 app.use(cors());
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 
 app.use('/', routes);
 app.use('/',routes2)
 
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 8080;
 
 
  const server = app.listen(PORT, () => {
