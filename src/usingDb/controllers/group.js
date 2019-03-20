@@ -1,3 +1,4 @@
+
 import db from '../config/db';
 import queries from '../config/queries';
 
@@ -22,14 +23,14 @@ export default class GroupControllers{
          }else{
              res.status(401).json({'status':401,'Error':'Group Already Exist'})
          }
-      
-      
-      
-      
+
+
+
+
     }catch(e){
-     
+
        }
-        
+
     }
 
     static async getAllGroupInfo(req,res){
@@ -40,8 +41,8 @@ export default class GroupControllers{
          const data = rows;
          res.status(200).json({'status':200,data})
        }
-       
-    
+
+
 
     }
     static async editGroupName(req,res){
@@ -52,7 +53,7 @@ export default class GroupControllers{
      if(evaluateCreator.rowCount!==1){
      res.status(403).json({'status':403, 'Message':'You are not Authorize to Edit group name'})
      }else{
-      
+
       const {rows,rowCount} = await db.query(queries.checkIfGroupExist,[name]);
       if(rowCount>0){
          res.status(401).json({'status':401,'message':'Group Name Already Exist Choose another Name'})
@@ -61,7 +62,7 @@ export default class GroupControllers{
          const {rows} = await db.query(queries.updateGroupName, editGroupTableValue);
          return res.status(201).json({'status':201, 'message':`Group name updated to ${name}`});
       }
- 
+
      }
     }
-}
+} 
