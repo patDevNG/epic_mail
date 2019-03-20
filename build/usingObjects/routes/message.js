@@ -1,23 +1,11 @@
+// import express from 'express';
+// import messageController from '../controllers/message';
+// const router = express.Router();
+// router.post('/',messageController.sendMessage);
+// router.get('/:id',messageController.getAllMessages);
+// // 
+// router.get('/sent',messageController.getSentMessages)
+// router.get('/specific/:id',messageController.getSpecificMail);
+// router.delete('/message/:id',messageController.deleteAspecificMail);
+// export default router;
 "use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _express = _interopRequireDefault(require("express"));
-
-var _message = _interopRequireDefault(require("../controllers/message"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var router = _express.default.Router();
-
-router.post('/', _message.default.sendMessage);
-router.get('/:id', _message.default.getAllMessages); // 
-
-router.get('/sent', _message.default.getSentMessages);
-router.get('/specific/:id', _message.default.getSpecificMail);
-router.delete('/message/:id', _message.default.deleteAspecificMail);
-var _default = router;
-exports.default = _default;

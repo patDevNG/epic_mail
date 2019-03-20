@@ -7,7 +7,7 @@ exports.default = void 0;
 
 var _express = _interopRequireDefault(require("express"));
 
-var _root = _interopRequireDefault(require("./root"));
+var _root = _interopRequireDefault(require("../../usingObjects/routes/root"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 

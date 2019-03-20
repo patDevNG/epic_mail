@@ -31,16 +31,14 @@ function () {
   _createClass(SignUpController, null, [{
     key: "signup",
     value: function signup(req, res) {
-      var userData = req.body; // const salt = bcrypt.genSaltSync(10);
-      // const hash = bcrypt.hashSync(userData.password, salt);
-
+      var userData = req.body;
       var user = new _user.default(userData.id = _user2.default.length, userData.firstName, userData.lastName, userData.country, userData.phoneNumber, userData.dateOfBirth, userData.gender, userData.email, userData.password);
 
       if (!_user2.default.find(function (newUser) {
         return newUser.email === userData.email;
       })) {
-        _bcryptjs.default.genSalt(10, function (err, salt) {
-          _bcryptjs.default.hash(user.password, salt, function (err, hash) {
+        _bcryptjs.default.genSalt(10, function (_err, salt) {
+          _bcryptjs.default.hash(user.password, salt, function (_err, hash) {
             user.password = hash;
 
             _user2.default.push(user);

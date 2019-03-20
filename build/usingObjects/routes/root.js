@@ -15,7 +15,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var router = _express.default.Router();
 
-router.use('/auth', _auth.default);
-router.use('/messages', _message.default);
+router.use('/auth', _auth.default); // router.use('/messages',message);
+
 var _default = router;
 exports.default = _default;

@@ -27,22 +27,22 @@ describe('Testing the Auth Route', function () {
     _asyncToGenerator(
     /*#__PURE__*/
     regeneratorRuntime.mark(function _callee() {
-      var _chai$request$post$ty;
-
       var res;
       return regeneratorRuntime.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return _chai.default.request(_app.default).post('/api/v1/auth/signup/').type('form').send((_chai$request$post$ty = {
+              return _chai.default.request(_app.default).post('/api/v1/auth/signup/').type('form').send({
                 "firstName": "Pat",
                 "lastName": "Okuns",
                 "country": "nigeria",
-                "email": " jus@123.com",
+                "phoneNumber": " jus@123.com",
                 "dateOfBirth": "123",
-                "gender": "Male"
-              }, _defineProperty(_chai$request$post$ty, "email", "e@b.com"), _defineProperty(_chai$request$post$ty, "password", "123"), _chai$request$post$ty));
+                "gender": "Male",
+                "email": "e@b.com",
+                "password": "123"
+              });
 
             case 2:
               res = _context.sent;
@@ -67,7 +67,7 @@ describe('Testing the Auth Route', function () {
     _asyncToGenerator(
     /*#__PURE__*/
     regeneratorRuntime.mark(function _callee2() {
-      var _chai$request$post$ty2;
+      var _chai$request$post$ty;
 
       var res;
       return regeneratorRuntime.wrap(function _callee2$(_context2) {
@@ -75,14 +75,14 @@ describe('Testing the Auth Route', function () {
           switch (_context2.prev = _context2.next) {
             case 0:
               _context2.next = 2;
-              return _chai.default.request(_app.default).post('/api/v1/auth/signup/').type('form').send((_chai$request$post$ty2 = {
+              return _chai.default.request(_app.default).post('/api/v1/auth/signup/').type('form').send((_chai$request$post$ty = {
                 "firstName": "Pat",
                 "lastName": "Okuns",
                 "country": "nigeria",
                 "email": " jus@123.com",
                 "dateOfBirth": "123",
                 "gender": "Male"
-              }, _defineProperty(_chai$request$post$ty2, "email", "e@b.com"), _defineProperty(_chai$request$post$ty2, "password", "123"), _chai$request$post$ty2));
+              }, _defineProperty(_chai$request$post$ty, "email", "e@b.com"), _defineProperty(_chai$request$post$ty, "password", "123"), _chai$request$post$ty));
 
             case 2:
               res = _context2.sent;
