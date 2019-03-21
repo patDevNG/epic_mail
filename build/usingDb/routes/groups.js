@@ -15,5 +15,8 @@ var router = _express.default.Router();
 
 router.post('/', _group.default.createGroup);
 router.get('/', _group.default.getAllGroupInfo);
+router.patch('/:id', _group.default.editGroupName);
+router.delete('/:id', _group.default.deleteGroup);
+router.post('/user/:id', _group.default.addUserToGroup);
 var _default = router;
 exports.default = _default;

@@ -5,6 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+require("@babel/polyfill");
+
 var _express = _interopRequireDefault(require("express"));
 
 var _cors = _interopRequireDefault(require("cors"));
@@ -28,7 +30,7 @@ app.use(_bodyParser.default.urlencoded({
 }));
 app.use('/', _v.default);
 app.use('/', _v2.default);
-var PORT = process.env.PORT || 8080;
+var PORT = process.env.PORT || 7080;
 var server = app.listen(PORT, function () {
   console.log("Server Started at Port: ".concat(PORT));
 });
