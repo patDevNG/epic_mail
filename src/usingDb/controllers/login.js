@@ -2,7 +2,8 @@ import bcrypt from 'bcryptjs';
 import db from '../config/db';
 import schema from '../model/schema';
 import jwt from 'jsonwebtoken';
-import Joi from 'joi'
+import Joi from 'joi';
+import secret from '../config/secret'
 import queries from '../config/queries';
 import user from '../../usingObjects/data/user';
 
@@ -12,8 +13,8 @@ export default class LoginController {
             const userData = {};
             userData.email = req.body.email;
             userData.password = req.body.password;
-            const {rowCount,rows} = await db.query(queries.checkIfUserExist,[userData.email]);
-            console.log(rows)
+            let {rowCount,rows} = await db.query(queries.checkIfUserExist,[userData.email]);
+            
             if(rowCount===0){
                 return res.status(404).json({'status':404,'message':'Email Does not Exist'})
             }else{
@@ -21,8 +22,8 @@ export default class LoginController {
                if(!validPassword){
                 return res.status(401).json({'status':200,'message':'Invalid Password'})
                }else{
-                const payload = { subject: userData.email };
-                const token = jwt.sign(payload, process.env.SECRET);
+                const {id}= rows[0]
+                const token = jwt.sign({ id }, secret.secret, { expiresIn: '24h' });
                 return res.status(200).json({'status':200,token,'message':'Login Successful'})
                }
      

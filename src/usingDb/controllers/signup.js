@@ -38,9 +38,9 @@ export default class SignUpController {
                     const userTableValue =[userData.firstName, userData.lastName, userData.country,
                         userData.phoneNumber, userData.gender,userData.email, userData.password]
                     const AddingUser = await db.query(queries.insertUsers,userTableValue);
+                    let id =AddingUser.rows[0].id;
         
-                    const payload = { subject: userData.email };
-                const token = jwt.sign(payload, secret.SECRET);
+                const token = jwt.sign(id, secret.SECRET);
                 return res.status(201).json({'status':201, token, 'message':`Welcome ${userData.firstName}`});
                 }else{
                     return res.status(401).json({'status':400, 'message':'Email Already Exist'})
