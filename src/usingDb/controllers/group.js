@@ -85,7 +85,7 @@ export default class GroupControllers{
        addedUser.email = req.body.email;
        addedUser.addedon = Date.now();
        const evaluateGroup =await db.query(queries.checkIfGroupExistByOneValue,[addedUser.groupId]);
-       if(evaluateGroup.rowCount ==){
+       if(evaluateGroup.rowCount ==0){
          const evaluateUser = await db.query(queries.checkIfUserExist,[addedUser.email]);
 
          if(evaluateUser.rowCount ===1){

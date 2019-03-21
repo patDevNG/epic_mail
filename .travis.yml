@@ -4,9 +4,8 @@ node_js:
 script:
   - npm test
 after_success:
-
   - nyc report --reporter=text-lcov | coveralls
-  services:
+services:
   - postgresql
-  before_script:
+before_script:
   - psql -c 'create database epicmail;' -U postgres
