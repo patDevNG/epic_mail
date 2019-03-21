@@ -7,6 +7,6 @@ const router = express.Router();
 
 router.use('/auth',auth);
 router.use('/messages',message);
-// router.use('/groups',groups);
+router.use('/groups',groups);
 
 export default router;
