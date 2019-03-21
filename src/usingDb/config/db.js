@@ -50,15 +50,20 @@ const messageQuery = ` CREATE TABLE IF NOT EXISTS messages(
     subject TEXT,
     message TEXT,
     parentMessageId BIGINT REFERENCES messages(id),
-    sendersEmail VARCHAR(200) REFERENCES users(email),
     status VARCHAR(200)
 )`
 
 const inbox = `CREATE TABLE IF NOT EXISTS inbox (
     inboxId SERIAL PRIMARY KEY NOT NULL UNIQUE,
     messageid BIGINT REFERENCES messages(id),
-    receiversEmail VARCHAR(200) REFERENCES users(email),
+    receiversid VARCHAR(200) REFERENCES users(email),
     status VARCHAR(200)
+)`;
+const sent = `CREATE TABLE IF NOT EXISTS sent (
+    sentid SERIAL PRIMARY KEY NOT NULL UNIQUE,
+    messageid BIGINT REFERENCES messages(id),
+    senderid VARCHAR(200) REFERENCES users(email)
+    
 )`;
 const group = `CREATE TABLE IF NOT EXISTS groups (
 groupid bigserial PRIMARY KEY UNIQUE NOT NULL,
@@ -83,6 +88,7 @@ const dropMemebers = `DROP TABLE IF EXISTS groupMembers CASCADE`;
 
 createATable(userQueryText);
 createATable(messageQuery);
+createATable(sent);
 createATable(inbox);
 createATable(group)
 createATable(groupMembers);

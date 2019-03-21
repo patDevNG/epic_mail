@@ -26,7 +26,7 @@ import Joi from 'joi';
         const schema ={
             subject:Joi.string().min(3).required(),
             message: Joi.string().min(3).required(),
-            email:Joi.string()
+            recieversEmail:Joi.string()
         }
         return Joi.validate(message,schema);
     }
