@@ -37,4 +37,26 @@ export default class MessageController {
 
     }
 }
+static async getAllMessages(req,res){
+    try{
+        const userId = req.user.id;
+        const { messageId } = req.params;
+        const validateNumber = schema.validateNumber(messageId);
+        if(validateNumber.error===null){
+            let allMessages = await db.query(queries.fetchAllmessages,[userId,messageId]);
+            let {rows}=allMessages
+            if(rows.length){
+                res.status(401).json({status:401,Message:'No New Message for the logged in User'});
+            }else{
+                res.status(200).json({ status: 200, data: [...rows], success: true });
+            }
+
+        }else{
+            res.status(400).json({status:400, error: 'Invalid Parameters Parsed'});
+        }
+    }catch(e){
+
+    }
+}
+
 }  

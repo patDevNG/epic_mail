@@ -30,6 +30,13 @@ import Joi from 'joi';
         }
         return Joi.validate(message,schema);
     }
+
+    static validateNumber(aNumber){
+        const schema ={
+            number:Joi.number()
+        }
+        return Joi.validate(aNumber,schema);
+    }
 }
 
 
