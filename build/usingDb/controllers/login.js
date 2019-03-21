@@ -92,9 +92,9 @@ function () {
 
               case 21:
                 payload = {
-                  subject: userData.id
+                  subject: userData.email
                 };
-                token = _jsonwebtoken.default.sign(payload, 'secretkey');
+                token = _jsonwebtoken.default.sign(payload, process.env.SECRET);
                 return _context.abrupt("return", res.status(200).json({
                   'status': 200,
                   token: token,

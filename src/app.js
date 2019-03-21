@@ -1,3 +1,4 @@
+import '@babel/polyfill';
 import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
@@ -19,7 +20,7 @@ app.use('/', routes);
 app.use('/',routes2)
 
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 7080;
 
 
  const server = app.listen(PORT, () => {

@@ -76,4 +76,33 @@ export default class GroupControllers{
        }
 
     }
+    static async addUserToGroup(req,res){
+       try{
+          
+          
+       const addedUser ={};
+       addedUser.groupId = req.body.groupId;
+       addedUser.email = req.body.email;
+       addedUser.addedon = Date.now();
+       const evaluateGroup =await db.query(queries.checkIfGroupExistByOneValue,[addedUser.groupId]);
+       if(evaluateGroup.rowCount ===1){
+         const evaluateUser = await db.query(queries.checkIfUserExist,[addedUser.email]);
+
+         if(evaluateUser.rowCount ===1){
+           const insertIntoGroup = await db.query(queries.insertUserIntoAGroup,[1,addedUser.email]);
+           res.status(201).json({'status':201, 'Message':'User Added Successfully'}) 
+         } else{
+            res.status(401).json({'status':401, 'message':'User Cannot be found'})
+         }
+       }else{
+         
+       }res.status(401).json({'status':401,'message':'Group Does Not Exist'})
+       
+      }catch(e){
+    console.log("asaksnnnnnnnnnnnnnnnnndasdklnasdjnasdjlnasjd;lj;asdas",e);
+    
+    
+    }
+}
+
 }
