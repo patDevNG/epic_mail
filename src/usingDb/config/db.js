@@ -69,8 +69,8 @@ creator VARCHAR(200) REFERENCES users(email)
 const groupMembers = `CREATE TABLE IF NOT EXISTS groupmembers (
 groupmembersId  SERIAL NOT NULL PRIMARY KEY UNIQUE,
 groupid bigserial REFERENCES groups(groupid) NOT NULL,
-memberemail VARCHAR(200) REFERENCES users(email),
-addedon TIMESTAMP DEFAULT now()
+memberemail VARCHAR(200) REFERENCES users(email)
+
 )`;
 
 const dropTable = `DROP TABLE IF EXISTS users CASCADE`;
@@ -86,6 +86,7 @@ createATable(messageQuery);
 createATable(inbox);
 createATable(group)
 createATable(groupMembers);
+
 
 
 
