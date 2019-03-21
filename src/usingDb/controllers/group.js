@@ -86,6 +86,7 @@ export default class GroupControllers{
        addedUser.addedon = Date.now();
        const evaluateGroup =await db.query(queries.checkIfGroupExistByOneValue,[addedUser.groupId]);
        if(evaluateGroup.rowCount ===1){
+
          const evaluateUser = await db.query(queries.checkIfUserExist,[addedUser.email]);
 
          if(evaluateUser.rowCount ===1){
@@ -99,7 +100,7 @@ export default class GroupControllers{
        }res.status(401).json({'status':401,'message':'Group Does Not Exist'})
        
       }catch(e){
-    console.log("asaksnnnnnnnnnnnnnnnnndasdklnasdjnasdjlnasjd;lj;asdas",e);
+    
     
     
     }
