@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 
-import jwtConfig from '../config';
+import secret from '../config/secret';
 
 import db from '../config/db';
 
@@ -13,10 +13,10 @@ class Auth {
   static verifyToken(req, res, next) {
     const token = req.headers['x-access-token']; 
     if (!token) { 
-      res.status(400).json({ status: 400, error: 'Missing token', success: false });
+      res.status(400).json({ status: 400, Message: 'Missing token' });
     } else { 
-      jwt.verify(token, jwtConfig.secret, (err, result) => { 
-        if (err) return res.status(400).json({ status: 400, error: 'Incorrect credentials', success: false });
+      jwt.verify(token, secret.secret, (err, result) => { 
+        if (err) return res.status(400).json({ status: 400, error: 'Incorrect credentials' });
        
         const queryText = `SELECT * FROM users WHERE id = $1;`;
         const value = [result.userId];
@@ -26,7 +26,7 @@ class Auth {
             req.user = { id: result.userId };
             next();
           }, (error) => {
-            res.status(400).json({ status: 400, error, success: false });
+            res.status(400).json({ status: 400, error });
           });
       });
     }
