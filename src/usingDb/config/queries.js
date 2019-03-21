@@ -13,6 +13,9 @@ queries.updateGroupName ='UPDATE groups SET name = $1 WHERE groupid = $2 AND cre
 queries.checkGroupCreator ='SELECT *FROM groups WHERE creator = $1 AND name =$2';
 queries.checkIfGroupExistById ='SELECT *FROM groups WHERE groupid = $1 AND creator =$2';
 queries.deleteGroup = 'DELETE  FROM groups WHERE groupid= $1 AND creator = $2 ';
+queries.insertUserIntoAGroup = 'INSERT INTO groupmembers(groupid,memberemail) VALUES ($1,$2)';
+queries.checkIfGroupExistByOneValue ='SELECT *FROM groups WHERE groupid=$1';
+queries.checkIfMemeberExistInGroup = 'SELECT *FROM groupmembers WHERE memberemail =$1';
 
 
 export default queries
