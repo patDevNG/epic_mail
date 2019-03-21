@@ -16,6 +16,9 @@ queries.deleteGroup = 'DELETE  FROM groups WHERE groupid= $1 AND creator = $2 ';
 queries.insertUserIntoAGroup = 'INSERT INTO groupmembers(groupid,memberemail) VALUES ($1,$2)';
 queries.checkIfGroupExistByOneValue ='SELECT *FROM groups WHERE groupid=$1';
 queries.checkIfMemeberExistInGroup = 'SELECT *FROM groupmembers WHERE memberemail =$1';
-
+queries.fetchAllmessages = `SELECT messages.id, messages.createdon, messages.subject, messages.message, 
+inboxes.receiverid, sents.senderid, messages.parentmessageid FROM messages INNER JOIN inboxes 
+ON messages.id = inboxes.messageid INNER JOIN sents ON sents.messageid = messages.id 
+WHERE (sents.senderid = $1 OR inboxes.receiverid = $1) AND messages.id = $2`;
 
 export default queries
