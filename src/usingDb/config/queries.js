@@ -1,5 +1,5 @@
 const queries={};
-queries.insertUsers ='INSERT INTO users(firstName,lastName,country,phoneNumber,gender,email,password) VALUES($1,$2,$3,$4,$5,$6,$7)'
+queries.insertUsers ='INSERT INTO users(firstName,lastName,country,phoneNumber,gender,email,password) VALUES($1,$2,$3,$4,$5,$6,$7)RETURNING id'
 queries.checkIfUserExist ='SELECT * FROM users where email = $1'
 queries.sendMessages = 'INSERT INTO messages(createdOn,subject,message,parentmessageId,status) VALUES ($1,$2,$3,$4,$5)';
 queries.inbox = 'INSERT INTO inbox(messageId,recieversid,status) VALUES ($1,$2,$3)';
