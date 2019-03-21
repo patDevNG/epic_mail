@@ -15,6 +15,8 @@ var _jsonwebtoken = _interopRequireDefault(require("jsonwebtoken"));
 
 var _joi = _interopRequireDefault(require("joi"));
 
+var _secret = _interopRequireDefault(require("../config/secret"));
+
 var _queries = _interopRequireDefault(require("../config/queries"));
 
 var _user = _interopRequireDefault(require("../../usingObjects/data/user"));
@@ -44,7 +46,7 @@ function () {
       var _login = _asyncToGenerator(
       /*#__PURE__*/
       regeneratorRuntime.mark(function _callee(req, res) {
-        var userData, _ref, rowCount, rows, validPassword, payload, token;
+        var userData, _ref, rowCount, rows, validPassword, id, token;
 
         return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
@@ -61,10 +63,9 @@ function () {
                 _ref = _context.sent;
                 rowCount = _ref.rowCount;
                 rows = _ref.rows;
-                console.log(rows);
 
                 if (!(rowCount === 0)) {
-                  _context.next = 14;
+                  _context.next = 13;
                   break;
                 }
 
@@ -73,15 +74,15 @@ function () {
                   'message': 'Email Does not Exist'
                 }));
 
-              case 14:
-                _context.next = 16;
+              case 13:
+                _context.next = 15;
                 return _bcryptjs.default.compareSync(userData.password, rows[0].password);
 
-              case 16:
+              case 15:
                 validPassword = _context.sent;
 
                 if (validPassword) {
-                  _context.next = 21;
+                  _context.next = 20;
                   break;
                 }
 
@@ -90,31 +91,33 @@ function () {
                   'message': 'Invalid Password'
                 }));
 
-              case 21:
-                payload = {
-                  subject: userData.email
-                };
-                token = _jsonwebtoken.default.sign(payload, process.env.SECRET);
+              case 20:
+                id = rows[0].id;
+                token = _jsonwebtoken.default.sign({
+                  id: id
+                }, _secret.default.secret, {
+                  expiresIn: '24h'
+                });
                 return _context.abrupt("return", res.status(200).json({
                   'status': 200,
                   token: token,
                   'message': 'Login Successful'
                 }));
 
-              case 24:
-                _context.next = 28;
+              case 23:
+                _context.next = 27;
                 break;
 
-              case 26:
-                _context.prev = 26;
+              case 25:
+                _context.prev = 25;
                 _context.t0 = _context["catch"](0);
 
-              case 28:
+              case 27:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 26]]);
+        }, _callee, null, [[0, 25]]);
       }));
 
       function login(_x, _x2) {

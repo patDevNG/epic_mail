@@ -51,9 +51,17 @@ function () {
       var schema = {
         subject: _joi.default.string().min(3).required(),
         message: _joi.default.string().min(3).required(),
-        email: _joi.default.string()
+        recieversEmail: _joi.default.string()
       };
       return _joi.default.validate(_message, schema);
+    }
+  }, {
+    key: "validateNumber",
+    value: function validateNumber(aNumber) {
+      var schema = {
+        number: _joi.default.number()
+      };
+      return _joi.default.validate(aNumber, schema);
     }
   }]);
 

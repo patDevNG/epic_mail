@@ -52,7 +52,7 @@ function () {
       var _signUp = _asyncToGenerator(
       /*#__PURE__*/
       regeneratorRuntime.mark(function _callee(req, res) {
-        var validateUser, userData, _ref, rowCount, salt, hash, userTableValue, AddingUser, payload, token;
+        var validateUser, userData, _ref, rowCount, salt, hash, userTableValue, AddingUser, id, token;
 
         return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
@@ -100,10 +100,8 @@ function () {
 
               case 25:
                 AddingUser = _context.sent;
-                payload = {
-                  subject: userData.email
-                };
-                token = _jsonwebtoken.default.sign(payload, _secret.default.SECRET);
+                id = AddingUser.rows[0].id;
+                token = _jsonwebtoken.default.sign(id, _secret.default.SECRET);
                 return _context.abrupt("return", res.status(201).json({
                   'status': 201,
                   token: token,
