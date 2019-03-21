@@ -17,6 +17,8 @@ var _jsonwebtoken = _interopRequireDefault(require("jsonwebtoken"));
 
 var _queries = _interopRequireDefault(require("../config/queries"));
 
+var _secret = _interopRequireDefault(require("../config/secret"));
+
 var _dbhelpers = _interopRequireDefault(require("../config/dbhelpers"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -99,9 +101,9 @@ function () {
               case 25:
                 AddingUser = _context.sent;
                 payload = {
-                  subject: userData.id
+                  subject: userData.email
                 };
-                token = _jsonwebtoken.default.sign(payload, 'secretkey');
+                token = _jsonwebtoken.default.sign(payload, _secret.default.SECRET);
                 return _context.abrupt("return", res.status(201).json({
                   'status': 201,
                   token: token,
