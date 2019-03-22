@@ -23,5 +23,12 @@ queries.insertUserIntoAGroup = 'INSERT INTO groupmembers(groupid,memberemail) VA
 queries.checkIfGroupExistByOneValue = 'SELECT *FROM groups WHERE groupid=$1';
 queries.checkIfMemeberExistInGroup = 'SELECT *FROM groupmembers WHERE memberemail =$1';
 queries.fetchAllmessages = "SELECT messages.id, messages.createdon, messages.subject, messages.message, \ninboxes.receiverid, sents.senderid, messages.parentmessageid FROM messages INNER JOIN inboxes \nON messages.id = inboxes.messageid INNER JOIN sents ON sents.messageid = messages.id \nWHERE (sents.senderid = $1 OR inboxes.receiverid = $1) AND messages.id = $2";
+queries.inboxMessages = "SELECT messages.id, messages.createdon, messages.subject, messages.message,\ninboxes.receiverid, sents.senderid, messages.parentmessageid, inboxes.status FROM messages INNER JOIN inboxes ON inboxes.messageid = messages.id INNER JOIN sents ON messages.id = sents.messageid \nWHERE inboxes.receiverid = $1";
+queries.getUnreadMessages = "SELECT messages.id, messages.createdon, messages.subject, messages.message,\n      inboxes.receiverid, sents.senderid, messages.parentmessageid, inboxes.status FROM messages INNER JOIN inboxes ON inboxes.messageid = messages.id INNER JOIN sents ON messages.id = sents.messageid \n      WHERE inboxes.receiverid = $1 AND inboxes.status = $2";
+queries.getSentMessages = "SELECT messages.id, messages.createdon, messages.subject, messages.message,\ninboxes.receiverid, sents.senderid, messages.parentmessageid, messages.status FROM messages INNER JOIN sents ON sents.messageid = messages.id INNER JOIN inboxes ON messages.id = inboxes.messageid \nWHERE sents.senderid = $1  AND messages.status = $2";
+queries.checkOwnerOfMessage = "SELECT messages.id, messages.message, sents.senderid FROM messages \nINNER JOIN sents ON messages.id = sents.messageid WHERE senderid = $1 AND messages.id = $2";
+queries.deleteFromSentMessage = "DELETE FROM sents WHERE sents.messageid = $1";
+queries.deleteFromInboxMessage = "DELETE FROM inboxes WHERE inboxes.messageid = $1";
+queries.deleteMessage = "DELETE FROM messages WHERE messages.id = $1 RETURNING messages.message";
 var _default = queries;
 exports.default = _default;

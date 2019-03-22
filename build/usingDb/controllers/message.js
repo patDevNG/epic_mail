@@ -44,7 +44,7 @@ function () {
       var _sendMessage = _asyncToGenerator(
       /*#__PURE__*/
       regeneratorRuntime.mark(function _callee(req, res) {
-        var validateMessage, _req$body, receiversEmail, subject, message, senderId, evaluateEmail, receiversid, createdOn, messageToInsert, populateMessageTable, messageId, sentMessageValues, inboxMessageValue, insertSent, insertInbox;
+        var validateMessage, _req$body, receiversEmail, subject, _message, senderId, evaluateEmail, receiversid, createdOn, messageToInsert, populateMessageTable, messageId, sentMessageValues, inboxMessageValue, insertSent, insertInbox;
 
         return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
@@ -58,7 +58,7 @@ function () {
                   break;
                 }
 
-                _req$body = req.body, receiversEmail = _req$body.receiversEmail, subject = _req$body.subject, message = _req$body.message;
+                _req$body = req.body, receiversEmail = _req$body.receiversEmail, subject = _req$body.subject, _message = _req$body.message;
                 senderId = req.user.id;
                 _context.next = 7;
                 return _db.default.query(_queries.default.checkIfUserExist, [receiversEmail]);
@@ -81,7 +81,7 @@ function () {
               case 12:
                 receiversid = evaluateEmail.rows[0].id;
                 createdOn = moment(new Date());
-                messageToInsert = [subject, message, createdOn, 'sent'];
+                messageToInsert = [subject, _message, createdOn, 'sent'];
                 _context.next = 17;
                 return _db.default.query(_queries.default.sendMessages, messageToInsert);
 
@@ -106,7 +106,7 @@ function () {
                     id: messageId,
                     createdOn: createdOn,
                     subject: subject,
-                    message: message,
+                    message: _message,
                     parentMessageId: null,
                     status: 'sent'
                   }]
@@ -215,6 +215,246 @@ function () {
       }
 
       return getAllMessages;
+    }()
+  }, {
+    key: "getAllInboxMessages",
+    value: function () {
+      var _getAllInboxMessages = _asyncToGenerator(
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee3(req, res) {
+        var userId, allInBoxMessages;
+        return regeneratorRuntime.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.prev = 0;
+                userId = req.user.id;
+                _context3.next = 4;
+                return _db.default.query(_queries.default.inboxMessages, [userId]);
+
+              case 4:
+                allInBoxMessages = _context3.sent;
+                res.status(200).json({
+                  status: 200,
+                  data: _toConsumableArray(allInBoxMessages.rows)
+                });
+                _context3.next = 11;
+                break;
+
+              case 8:
+                _context3.prev = 8;
+                _context3.t0 = _context3["catch"](0);
+                res.status(500).json({
+                  status: 500,
+                  error: "can't get messages"
+                });
+
+              case 11:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, null, [[0, 8]]);
+      }));
+
+      function getAllInboxMessages(_x5, _x6) {
+        return _getAllInboxMessages.apply(this, arguments);
+      }
+
+      return getAllInboxMessages;
+    }()
+  }, {
+    key: "getAllUnreadMessages",
+    value: function () {
+      var _getAllUnreadMessages = _asyncToGenerator(
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee4(req, res) {
+        var userId, allUnreadMessages;
+        return regeneratorRuntime.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.prev = 0;
+                userId = req.params.id;
+                _context4.next = 4;
+                return _db.default.query(_queries.default.getUnreadMessages, [userId, 'unread']);
+
+              case 4:
+                allUnreadMessages = _context4.sent;
+                res.status(200).json({
+                  status: 200,
+                  data: _toConsumableArray(allUnreadMessages.rows)
+                });
+                _context4.next = 11;
+                break;
+
+              case 8:
+                _context4.prev = 8;
+                _context4.t0 = _context4["catch"](0);
+                res.status(500).json({
+                  status: 500,
+                  error: "can't get messages"
+                });
+
+              case 11:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, null, [[0, 8]]);
+      }));
+
+      function getAllUnreadMessages(_x7, _x8) {
+        return _getAllUnreadMessages.apply(this, arguments);
+      }
+
+      return getAllUnreadMessages;
+    }()
+  }, {
+    key: "getSentMails",
+    value: function () {
+      var _getSentMails = _asyncToGenerator(
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee5(req, res) {
+        var userId, allSentMessages;
+        return regeneratorRuntime.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _context5.prev = 0;
+                userId = req.params.id;
+                _context5.next = 4;
+                return _db.default.query(_queries.default.getSentMessages, [userId, 'sent']);
+
+              case 4:
+                allSentMessages = _context5.sent;
+                res.status(200).json({
+                  status: 200,
+                  data: _toConsumableArray(allSentMessages)
+                });
+                _context5.next = 11;
+                break;
+
+              case 8:
+                _context5.prev = 8;
+                _context5.t0 = _context5["catch"](0);
+                res.status(500).json({
+                  status: 500,
+                  error: "can't get messages"
+                });
+
+              case 11:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5, null, [[0, 8]]);
+      }));
+
+      function getSentMails(_x9, _x10) {
+        return _getSentMails.apply(this, arguments);
+      }
+
+      return getSentMails;
+    }()
+  }, {
+    key: "deleteMessage",
+    value: function () {
+      var _deleteMessage = _asyncToGenerator(
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee6(req, res) {
+        var userId, messageId, validateNumber, evaluateMessageOwner, messageToDelete, deleteSent, deleteInbox, deletFromMessage;
+        return regeneratorRuntime.wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                _context6.prev = 0;
+                userId = req.params.id;
+                messageId = req.params.messageId;
+                validateNumber = _schema.default.validateNumber(messageId);
+
+                if (!(validateNumber.error === null)) {
+                  _context6.next = 25;
+                  break;
+                }
+
+                _context6.next = 7;
+                return _db.default.query(_queries.default.checkOwnerOfMessage, [userId, messageId]);
+
+              case 7:
+                evaluateMessageOwner = _context6.sent;
+
+                if (!(evaluateMessageOwner.rowCount === 0)) {
+                  _context6.next = 12;
+                  break;
+                }
+
+                res.status(400).json({
+                  status: 400,
+                  message: 'unauthorized operation'
+                });
+                _context6.next = 23;
+                break;
+
+              case 12:
+                messageToDelete = evaluateMessageOwner.rows[0].messageToDelete;
+                _context6.next = 15;
+                return _db.default.query(_queries.default.deleteFromSentMessage, [messageId]);
+
+              case 15:
+                deleteSent = _context6.sent;
+                _context6.next = 18;
+                return _db.default.query(_queries.default.deleteFromInboxMessage, [messageId]);
+
+              case 18:
+                deleteInbox = _context6.sent;
+                _context6.next = 21;
+                return _db.default.query(_queries.default.deletFromMessage, [messageId]);
+
+              case 21:
+                deletFromMessage = _context6.sent;
+                res.status(200).json({
+                  status: 200,
+                  data: [{
+                    message: message
+                  }]
+                });
+
+              case 23:
+                _context6.next = 26;
+                break;
+
+              case 25:
+                res.status(400).json({
+                  status: 400,
+                  Message: 'Input Not a Number'
+                });
+
+              case 26:
+                _context6.next = 31;
+                break;
+
+              case 28:
+                _context6.prev = 28;
+                _context6.t0 = _context6["catch"](0);
+                res.status(500).json({
+                  status: 500,
+                  error: "message error"
+                });
+
+              case 31:
+              case "end":
+                return _context6.stop();
+            }
+          }
+        }, _callee6, null, [[0, 28]]);
+      }));
+
+      function deleteMessage(_x11, _x12) {
+        return _deleteMessage.apply(this, arguments);
+      }
+
+      return deleteMessage;
     }()
   }]);
 

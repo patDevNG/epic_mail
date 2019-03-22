@@ -23,6 +23,8 @@ var _user = _interopRequireDefault(require("../../usingObjects/data/user"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _readOnlyError(name) { throw new Error("\"" + name + "\" is read-only"); }
+
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
@@ -46,26 +48,34 @@ function () {
       var _login = _asyncToGenerator(
       /*#__PURE__*/
       regeneratorRuntime.mark(function _callee(req, res) {
-        var userData, _ref, rowCount, rows, validPassword, id, token;
+        var validateUser, userData, _ref, rowCount, rows, validPassword, id, token;
 
         return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 _context.prev = 0;
+                validateUser = _schema.default.loginUser(req.body);
+
+                if (!(validateUser.error === null)) {
+                  _context.next = 28;
+                  break;
+                }
+
                 userData = {};
+                userData = (_readOnlyError("userData"), req.body);
                 userData.email = req.body.email;
                 userData.password = req.body.password;
-                _context.next = 6;
+                _context.next = 9;
                 return _db.default.query(_queries.default.checkIfUserExist, [userData.email]);
 
-              case 6:
+              case 9:
                 _ref = _context.sent;
                 rowCount = _ref.rowCount;
                 rows = _ref.rows;
 
                 if (!(rowCount === 0)) {
-                  _context.next = 13;
+                  _context.next = 16;
                   break;
                 }
 
@@ -74,24 +84,24 @@ function () {
                   'message': 'Email Does not Exist'
                 }));
 
-              case 13:
-                _context.next = 15;
+              case 16:
+                _context.next = 18;
                 return _bcryptjs.default.compareSync(userData.password, rows[0].password);
 
-              case 15:
+              case 18:
                 validPassword = _context.sent;
 
                 if (validPassword) {
-                  _context.next = 20;
+                  _context.next = 23;
                   break;
                 }
 
                 return _context.abrupt("return", res.status(401).json({
-                  'status': 200,
+                  'status': 401,
                   'message': 'Invalid Password'
                 }));
 
-              case 20:
+              case 23:
                 id = rows[0].id;
                 token = _jsonwebtoken.default.sign({
                   id: id
@@ -104,20 +114,30 @@ function () {
                   'message': 'Login Successful'
                 }));
 
-              case 23:
-                _context.next = 27;
+              case 26:
+                _context.next = 29;
                 break;
 
-              case 25:
-                _context.prev = 25;
+              case 28:
+                res.status(401).json({
+                  'status': 401,
+                  'message': 'Invalid Input'
+                });
+
+              case 29:
+                _context.next = 33;
+                break;
+
+              case 31:
+                _context.prev = 31;
                 _context.t0 = _context["catch"](0);
 
-              case 27:
+              case 33:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 25]]);
+        }, _callee, null, [[0, 31]]);
       }));
 
       function login(_x, _x2) {
