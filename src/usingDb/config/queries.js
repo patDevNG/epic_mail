@@ -20,5 +20,21 @@ queries.fetchAllmessages = `SELECT messages.id, messages.createdon, messages.sub
 inboxes.receiverid, sents.senderid, messages.parentmessageid FROM messages INNER JOIN inboxes 
 ON messages.id = inboxes.messageid INNER JOIN sents ON sents.messageid = messages.id 
 WHERE (sents.senderid = $1 OR inboxes.receiverid = $1) AND messages.id = $2`;
+queries.inboxMessages = `SELECT messages.id, messages.createdon, messages.subject, messages.message,
+inboxes.receiverid, sents.senderid, messages.parentmessageid, inboxes.status FROM messages INNER JOIN inboxes ON inboxes.messageid = messages.id INNER JOIN sents ON messages.id = sents.messageid 
+WHERE inboxes.receiverid = $1`;
+
+queries.getUnreadMessages =`SELECT messages.id, messages.createdon, messages.subject, messages.message,
+      inboxes.receiverid, sents.senderid, messages.parentmessageid, inboxes.status FROM messages INNER JOIN inboxes ON inboxes.messageid = messages.id INNER JOIN sents ON messages.id = sents.messageid 
+      WHERE inboxes.receiverid = $1 AND inboxes.status = $2`;
+queries.getSentMessages =`SELECT messages.id, messages.createdon, messages.subject, messages.message,
+inboxes.receiverid, sents.senderid, messages.parentmessageid, messages.status FROM messages INNER JOIN sents ON sents.messageid = messages.id INNER JOIN inboxes ON messages.id = inboxes.messageid 
+WHERE sents.senderid = $1  AND messages.status = $2`;  
+queries.checkOwnerOfMessage = `SELECT messages.id, messages.message, sents.senderid FROM messages 
+INNER JOIN sents ON messages.id = sents.messageid WHERE senderid = $1 AND messages.id = $2`;  
+
+queries.deleteFromSentMessage = `DELETE FROM sents WHERE sents.messageid = $1`;
+queries.deleteFromInboxMessage =`DELETE FROM inboxes WHERE inboxes.messageid = $1`;
+queries.deleteMessage = `DELETE FROM messages WHERE messages.id = $1 RETURNING messages.message`
 
 export default queries
